@@ -1,0 +1,585 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C15E0B425F448E900F9F12D /* NAPIGalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15E0B325F448E900F9F12D /* NAPIGalleryApp.swift */; };
+		4C15E0B625F448E900F9F12D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15E0B525F448E900F9F12D /* ContentView.swift */; };
+		4C15E0B825F448EA00F9F12D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C15E0B725F448EA00F9F12D /* Assets.xcassets */; };
+		4C15E0BB25F448EA00F9F12D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C15E0BA25F448EA00F9F12D /* Preview Assets.xcassets */; };
+		4C15E0C625F448EA00F9F12D /* NAPIGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15E0C525F448EA00F9F12D /* NAPIGalleryTests.swift */; };
+		4C15E0D125F448EA00F9F12D /* NAPIGalleryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15E0D025F448EA00F9F12D /* NAPIGalleryUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C15E0C225F448EA00F9F12D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C15E0A825F448E900F9F12D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C15E0AF25F448E900F9F12D;
+			remoteInfo = NAPIGallery;
+		};
+		4C15E0CD25F448EA00F9F12D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C15E0A825F448E900F9F12D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C15E0AF25F448E900F9F12D;
+			remoteInfo = NAPIGallery;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4C15E0B025F448E900F9F12D /* NAPIGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NAPIGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C15E0B325F448E900F9F12D /* NAPIGalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIGalleryApp.swift; sourceTree = "<group>"; };
+		4C15E0B525F448E900F9F12D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4C15E0B725F448EA00F9F12D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C15E0BA25F448EA00F9F12D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4C15E0BC25F448EA00F9F12D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C15E0C125F448EA00F9F12D /* NAPIGalleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NAPIGalleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C15E0C525F448EA00F9F12D /* NAPIGalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIGalleryTests.swift; sourceTree = "<group>"; };
+		4C15E0C725F448EA00F9F12D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C15E0CC25F448EA00F9F12D /* NAPIGalleryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NAPIGalleryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C15E0D025F448EA00F9F12D /* NAPIGalleryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIGalleryUITests.swift; sourceTree = "<group>"; };
+		4C15E0D225F448EA00F9F12D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C15E0AD25F448E900F9F12D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C15E0BE25F448EA00F9F12D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C15E0C925F448EA00F9F12D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C15E0A725F448E900F9F12D = {
+			isa = PBXGroup;
+			children = (
+				4C15E0B225F448E900F9F12D /* NAPIGallery */,
+				4C15E0C425F448EA00F9F12D /* NAPIGalleryTests */,
+				4C15E0CF25F448EA00F9F12D /* NAPIGalleryUITests */,
+				4C15E0B125F448E900F9F12D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4C15E0B125F448E900F9F12D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C15E0B025F448E900F9F12D /* NAPIGallery.app */,
+				4C15E0C125F448EA00F9F12D /* NAPIGalleryTests.xctest */,
+				4C15E0CC25F448EA00F9F12D /* NAPIGalleryUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C15E0B225F448E900F9F12D /* NAPIGallery */ = {
+			isa = PBXGroup;
+			children = (
+				4C15E0B325F448E900F9F12D /* NAPIGalleryApp.swift */,
+				4C15E0B525F448E900F9F12D /* ContentView.swift */,
+				4C15E0B725F448EA00F9F12D /* Assets.xcassets */,
+				4C15E0BC25F448EA00F9F12D /* Info.plist */,
+				4C15E0B925F448EA00F9F12D /* Preview Content */,
+			);
+			path = NAPIGallery;
+			sourceTree = "<group>";
+		};
+		4C15E0B925F448EA00F9F12D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				4C15E0BA25F448EA00F9F12D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4C15E0C425F448EA00F9F12D /* NAPIGalleryTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C15E0C525F448EA00F9F12D /* NAPIGalleryTests.swift */,
+				4C15E0C725F448EA00F9F12D /* Info.plist */,
+			);
+			path = NAPIGalleryTests;
+			sourceTree = "<group>";
+		};
+		4C15E0CF25F448EA00F9F12D /* NAPIGalleryUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4C15E0D025F448EA00F9F12D /* NAPIGalleryUITests.swift */,
+				4C15E0D225F448EA00F9F12D /* Info.plist */,
+			);
+			path = NAPIGalleryUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C15E0AF25F448E900F9F12D /* NAPIGallery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C15E0D525F448EA00F9F12D /* Build configuration list for PBXNativeTarget "NAPIGallery" */;
+			buildPhases = (
+				4C15E0AC25F448E900F9F12D /* Sources */,
+				4C15E0AD25F448E900F9F12D /* Frameworks */,
+				4C15E0AE25F448E900F9F12D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NAPIGallery;
+			productName = NAPIGallery;
+			productReference = 4C15E0B025F448E900F9F12D /* NAPIGallery.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4C15E0C025F448EA00F9F12D /* NAPIGalleryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C15E0D825F448EA00F9F12D /* Build configuration list for PBXNativeTarget "NAPIGalleryTests" */;
+			buildPhases = (
+				4C15E0BD25F448EA00F9F12D /* Sources */,
+				4C15E0BE25F448EA00F9F12D /* Frameworks */,
+				4C15E0BF25F448EA00F9F12D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C15E0C325F448EA00F9F12D /* PBXTargetDependency */,
+			);
+			name = NAPIGalleryTests;
+			productName = NAPIGalleryTests;
+			productReference = 4C15E0C125F448EA00F9F12D /* NAPIGalleryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4C15E0CB25F448EA00F9F12D /* NAPIGalleryUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C15E0DB25F448EA00F9F12D /* Build configuration list for PBXNativeTarget "NAPIGalleryUITests" */;
+			buildPhases = (
+				4C15E0C825F448EA00F9F12D /* Sources */,
+				4C15E0C925F448EA00F9F12D /* Frameworks */,
+				4C15E0CA25F448EA00F9F12D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C15E0CE25F448EA00F9F12D /* PBXTargetDependency */,
+			);
+			name = NAPIGalleryUITests;
+			productName = NAPIGalleryUITests;
+			productReference = 4C15E0CC25F448EA00F9F12D /* NAPIGalleryUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C15E0A825F448E900F9F12D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					4C15E0AF25F448E900F9F12D = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					4C15E0C025F448EA00F9F12D = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 4C15E0AF25F448E900F9F12D;
+					};
+					4C15E0CB25F448EA00F9F12D = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 4C15E0AF25F448E900F9F12D;
+					};
+				};
+			};
+			buildConfigurationList = 4C15E0AB25F448E900F9F12D /* Build configuration list for PBXProject "NAPIGallery" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C15E0A725F448E900F9F12D;
+			productRefGroup = 4C15E0B125F448E900F9F12D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C15E0AF25F448E900F9F12D /* NAPIGallery */,
+				4C15E0C025F448EA00F9F12D /* NAPIGalleryTests */,
+				4C15E0CB25F448EA00F9F12D /* NAPIGalleryUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C15E0AE25F448E900F9F12D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C15E0BB25F448EA00F9F12D /* Preview Assets.xcassets in Resources */,
+				4C15E0B825F448EA00F9F12D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C15E0BF25F448EA00F9F12D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C15E0CA25F448EA00F9F12D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C15E0AC25F448E900F9F12D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C15E0B625F448E900F9F12D /* ContentView.swift in Sources */,
+				4C15E0B425F448E900F9F12D /* NAPIGalleryApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C15E0BD25F448EA00F9F12D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C15E0C625F448EA00F9F12D /* NAPIGalleryTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C15E0C825F448EA00F9F12D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C15E0D125F448EA00F9F12D /* NAPIGalleryUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4C15E0C325F448EA00F9F12D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C15E0AF25F448E900F9F12D /* NAPIGallery */;
+			targetProxy = 4C15E0C225F448EA00F9F12D /* PBXContainerItemProxy */;
+		};
+		4C15E0CE25F448EA00F9F12D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C15E0AF25F448E900F9F12D /* NAPIGallery */;
+			targetProxy = 4C15E0CD25F448EA00F9F12D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		4C15E0D325F448EA00F9F12D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4C15E0D425F448EA00F9F12D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C15E0D625F448EA00F9F12D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NAPIGallery/Preview Content\"";
+				DEVELOPMENT_TEAM = SJD3J9CYQ8;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = NAPIGallery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.committedcode.NAPIGallery;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4C15E0D725F448EA00F9F12D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"NAPIGallery/Preview Content\"";
+				DEVELOPMENT_TEAM = SJD3J9CYQ8;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = NAPIGallery/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.committedcode.NAPIGallery;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4C15E0D925F448EA00F9F12D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJD3J9CYQ8;
+				INFOPLIST_FILE = NAPIGalleryTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.committedcode.NAPIGalleryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NAPIGallery.app/NAPIGallery";
+			};
+			name = Debug;
+		};
+		4C15E0DA25F448EA00F9F12D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJD3J9CYQ8;
+				INFOPLIST_FILE = NAPIGalleryTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.committedcode.NAPIGalleryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NAPIGallery.app/NAPIGallery";
+			};
+			name = Release;
+		};
+		4C15E0DC25F448EA00F9F12D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJD3J9CYQ8;
+				INFOPLIST_FILE = NAPIGalleryUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.committedcode.NAPIGalleryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NAPIGallery;
+			};
+			name = Debug;
+		};
+		4C15E0DD25F448EA00F9F12D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SJD3J9CYQ8;
+				INFOPLIST_FILE = NAPIGalleryUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.committedcode.NAPIGalleryUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NAPIGallery;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C15E0AB25F448E900F9F12D /* Build configuration list for PBXProject "NAPIGallery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C15E0D325F448EA00F9F12D /* Debug */,
+				4C15E0D425F448EA00F9F12D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C15E0D525F448EA00F9F12D /* Build configuration list for PBXNativeTarget "NAPIGallery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C15E0D625F448EA00F9F12D /* Debug */,
+				4C15E0D725F448EA00F9F12D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C15E0D825F448EA00F9F12D /* Build configuration list for PBXNativeTarget "NAPIGalleryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C15E0D925F448EA00F9F12D /* Debug */,
+				4C15E0DA25F448EA00F9F12D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C15E0DB25F448EA00F9F12D /* Build configuration list for PBXNativeTarget "NAPIGalleryUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C15E0DC25F448EA00F9F12D /* Debug */,
+				4C15E0DD25F448EA00F9F12D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C15E0A825F448E900F9F12D /* Project object */;
+}
