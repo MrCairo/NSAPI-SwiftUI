@@ -11,7 +11,7 @@ import SwiftUI
 struct NAPIGalleryApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NAPIMainContentView()
         }
     }
 }
