@@ -11,14 +11,15 @@ enum APODMediaType: Int, Codable {
     case imageURL
     case imageData
     case video
+    case none
 }
 
-class APODDataModel: ObservableObject, Codable {
-    @Published var title: String
-    @Published var description: String
-    @Published var url: URL?
-    @Published var copyright: String?
-    @Published var mediaType: String
+class APODDataModel: Codable {
+    let title: String
+    let description: String
+    let url: URL?
+    let copyright: String?
+    let mediaType: String
     
     enum Keys: String, CodingKey {
         case title
