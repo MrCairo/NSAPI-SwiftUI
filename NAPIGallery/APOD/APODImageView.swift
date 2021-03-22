@@ -6,46 +6,83 @@
 //
 
 import SwiftUI
+import Combine
 
+///
+/// Represents a view with an image - like a UIKit UIImageView
+///
 struct APODImageView: View {
     let mediaType: APODMediaType
     let mediaData: Data
     let id = UUID()
     
+    /// A system image to present in the case of a failure.
+    let failImage = imageFromName("system:exclamationmark.triangle.fill")
+    
+    /// An image to display while waiting for something - like an image to load!
+    let waitImage = imageFromName("system:slowmo")
+    
+    /// Observing changes in the ImageLoader.
+    /// This would really be just the change in the Image object within the loader
+    @ObservedObject private var loader = ImageLoader()
+
     var body: some View {
-        let failImage = APODImageView.imageFromName("system:exclamationmark.triangle.fill")
-        
         if let string = String(data: mediaData, encoding: .utf8) {
             switch(mediaType) {
+            // The image is located via a URL. Could also be a file URL
             case .imageURL:
-                if string.hasPrefix("http") || string.hasPrefix("file"),
-                   let imageURL = URL(string: string) {
-                    APODImageView.imageFromURL(imageURL)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
+                if string.hasPrefix("http") || string.hasPrefix("file") {
+                    if let image = loader.load(string) {
+                        return Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                    } else {
+                        return waitImage
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
                 } else {
-                    APODImageView.imageFromName(string)
+                    // The image URL wasn't a URL (http(s):// or file://) so try to
+                    // load it as a system type image.
+                    return APODImageView.imageFromName(string)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                 }
                 
+            // The imageData represents a binary image. Convert it an display it.
             case .imageData:
                 if let uiImage = UIImage(data: mediaData) {
-                    Image(uiImage: uiImage)
+                    return Image(uiImage: uiImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
                 } else {
-                    Image("xmark.octagon.fill")
+                    return Image("xmark.octagon.fill")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 }
-                
+
             default:
-                failImage
+                return failImage
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fill)
             }
         }
+
+        return failImage
+            .resizable()
+            .aspectRatio(contentMode: .fill)
     }
     
+    init(mediaType: APODMediaType, mediaData: Data) {
+        self.mediaType = mediaType
+        self.mediaData = mediaData
+    }
+
+    ///
+    /// Given a name, this function will return an image based upon that string.
+    /// Optionally, the name can begin with ```system:``` in which case, the
+    /// image will be considered a system image.
+    ///
     static func imageFromName(_ named: String) -> Image {
         var name = named
         var newImage: Image = Image("xmark.octagon.fill")
@@ -56,20 +93,9 @@ struct APODImageView: View {
         } else {
             newImage = Image(name)
         }
-        
         return newImage
     }
-    
-    
-    static func imageFromURL(_ imageURL: URL) -> Image {
-        var image: Image = Image(systemName: "xmark.octagon.fill")
-        if let data = try? Data(contentsOf: imageURL),
-           let uiImage = UIImage(data: data) {
-            image = Image(uiImage: uiImage)
-        }
-        
-        return image
-    }
+
 }
 
 #if DEBUG

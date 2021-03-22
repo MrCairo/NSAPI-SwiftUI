@@ -9,29 +9,30 @@ import SwiftUI
 import Combine
 
 struct APODContentView: View {
-    private var apodService = APODService()
+    @ObservedObject public var viewModel = APODContentViewModel()
     let emptyData = Data()
     
     var body: some View {
         VStack {
-            if let copyright = apodService.apodData.copyright {
-                Text(copyright)
+            if let title = viewModel.service.apodData.title {
+                Text(title)
                     .font(.title)
             }
         }
         GeometryReader { geo in
             if geo.size.height > geo.size.width {
                 VStack {
-                    APODContentMixView(data: apodService.apodData)
+                    APODContentMixView(data: viewModel.service.apodData)
                 }
             } else {
                 HStack {
-                    APODContentMixView(data: apodService.apodData)
+                    APODContentMixView(data: viewModel.service.apodData)
                 }
             }
         }
     }
 }
+
 
 private struct APODContentMixView: View {
     let data: APODDataModel
@@ -43,10 +44,9 @@ private struct APODContentMixView: View {
                    minHeight: 0,
                    maxHeight: .infinity)
         
-        let url = data.url
-        if (data.mediaType == "image") {
-            APODImageView(mediaType: (url != nil) ? .imageURL : .imageData,
-                          mediaData: url?.absoluteString.data(using: .utf8) ?? Data())
+            if (data.mediaType == "image") {
+            APODImageView(mediaType: (data.url != nil) ? .imageURL : .imageData,
+                          mediaData: data.url?.absoluteString.data(using: .utf8) ?? Data())
                 .frame(minWidth: 0,
                        maxWidth: .infinity,
                        minHeight: 0,
@@ -54,7 +54,7 @@ private struct APODContentMixView: View {
             
         } else {
             APODVideoView(mediaType: .video,
-                          mediaData: url?.absoluteString.data(using: .utf8) ?? Data())
+                          mediaData: data.url?.absoluteString.data(using: .utf8) ?? Data())
                 .frame(minWidth: 0,
                        maxWidth: .infinity,
                        minHeight: 0,
