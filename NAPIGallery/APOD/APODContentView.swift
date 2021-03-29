@@ -9,57 +9,62 @@ import SwiftUI
 import Combine
 
 struct APODContentView: View {
-    @ObservedObject public var viewModel = APODContentViewModel()
+    @State private var showingPopover = false
+    @State private var date = SelectedDate(startDate: Date())
+    @State private var apodData = APODDataModel()
+    private var viewModel = APODContentViewModel()
+
     let emptyData = Data()
     
     var body: some View {
-        VStack {
-            if let title = viewModel.service.apodData.title {
-                Text(title)
-                    .font(.title)
+        HStack {
+            VStack {
+                if let title = (viewModel.service.apodData.title) {
+                    Text(title)
+                        .font(.title)
+                }
+                
+                GeometryReader { geo in
+                    if geo.size.height > geo.size.width {
+                        VStack {
+                            APODContentMixView(data: viewModel.service.apodData)
+                        }
+                    } else {
+                        HStack {
+                            APODContentMixView(data: viewModel.service.apodData)
+                        }
+                    }
+                }
             }
+            .onAppear(perform: {
+                let dateString = NAPIService.standardDateString(date.startDate)
+                let item = URLQueryItem(name: "date", value: dateString)
+                let _ = viewModel.$apodData
+                    .sink {
+                        self.apodData = $0
+                    }
+                viewModel.fetch(queryParms: [item])
+            })
         }
-        GeometryReader { geo in
-            if geo.size.height > geo.size.width {
-                VStack {
-                    APODContentMixView(data: viewModel.service.apodData)
-                }
-            } else {
-                HStack {
-                    APODContentMixView(data: viewModel.service.apodData)
-                }
-            }
+        .navigationBarItems(trailing: Button(action: { showingPopover = true},
+                                            label: {
+                                                Label("Info", systemImage: "info.circle")
+                                                    .labelStyle(IconOnlyLabelStyle())
+        }))
+        .sheet(isPresented: $showingPopover, onDismiss: {
+            print("dismissed")
+        }) {
+            NAPIDateSelectionView(viewPresented: $showingPopover, selectedDate: $date)
         }
     }
 }
 
 
-private struct APODContentMixView: View {
-    let data: APODDataModel
+private struct InfoLinkButton<Destination : View>: View {
+    var destination:  Destination
     
     var body: some View {
-        APODTextView(text: data.description)
-            .frame(minWidth: 0,
-                   maxWidth: .infinity,
-                   minHeight: 0,
-                   maxHeight: .infinity)
-        
-            if (data.mediaType == "image") {
-            APODImageView(mediaType: (data.url != nil) ? .imageURL : .imageData,
-                          mediaData: data.url?.absoluteString.data(using: .utf8) ?? Data())
-                .frame(minWidth: 0,
-                       maxWidth: .infinity,
-                       minHeight: 0,
-                       maxHeight: .infinity)
-            
-        } else {
-            APODVideoView(mediaType: .video,
-                          mediaData: data.url?.absoluteString.data(using: .utf8) ?? Data())
-                .frame(minWidth: 0,
-                       maxWidth: .infinity,
-                       minHeight: 0,
-                       maxHeight: .infinity)
-        }
+        NavigationLink(destination: self.destination) { Image(systemName: "info.circle") }
     }
 }
 

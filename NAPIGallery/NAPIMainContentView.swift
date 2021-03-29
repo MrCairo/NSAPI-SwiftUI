@@ -7,29 +7,60 @@
 
 import SwiftUI
 
+public var apiKey: String = ""
+
 struct NAPIMainContentView: View {
+    @Binding var text: String? // this is updated as the user types in the text field
+    @State private var alertPresenting: Bool = true
+    @State private var inputText: String?
+
     let menuItems = [
         NAPIMenuItem(title: "APOD", description: "Astronomical Picture of the Day", targetType: .apod),
         NAPIMenuItem(title: "About", description: "Something about this app", targetType: .about)
     ]
-
+    
     var body: some View {
         NavigationView {
-            List(menuItems) { item in
-                NAPIMenuNavigationLink(menuItem: item)
-            }
-            .navigationTitle("NASA API Gallery")
-            .listStyle(GroupedListStyle())
-            .navigationBarTitleDisplayMode(.inline)
+            if alertPresenting {
+                NAPIKeyAlertView(isPresenting: $alertPresenting)
+            } else {
+                List(menuItems) { item in
+                    NAPIMenuNavigationLink(menuItem: item)
+                }
+                .navigationTitle("NASA API Gallery")
+                .listStyle(GroupedListStyle())
+                .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
 
-#if DEBUG
-
-struct NAPIMainContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        NAPIMainContentView()
+struct NAPIKeyAlertView: View {
+    @Binding var isPresenting: Bool
+    
+    var body: some View {
+        HStack {
+            Text("")
+        }
+        .keyTextFieldAlert(isPresented: $isPresenting) { () -> NAPIKeyPromptView in
+            NAPIKeyPromptView(title: "API Key", message: "Enter your own NASA API Key")
+        }
     }
 }
+
+//    var body: some View {
+//        .keyTextFieldAlert(isPresented: $isPresenting) { () -> NAPIKeyPromptView in
+//            NAPIKeyPromptView(title: "API Key",
+//                              message: "Enter your own NASA API Key",
+//                              isPresented: $isPresenting)
+//        }
+//    }
+}
+
+#if DEBUG
+
+//struct NAPIMainContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NAPIMainContentView()
+//    }
+//}
 #endif

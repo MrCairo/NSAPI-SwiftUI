@@ -11,8 +11,10 @@ import UIKit
 let imageExt = ["jpg", "jpeg", "png", "gif"]
 
 final class APODContentViewModel: Identifiable, ObservableObject {
-    private var imageData = Data()
-    @Published private(set) var service: APODService = APODService()
+    @Published private(set) var apodData = APODDataModel()
+    @Published private(set) var imageData = Data()
+
+    private(set) var service: APODService = APODService()
     private var lastFetch = Date()
     
     var title: String {
@@ -60,20 +62,27 @@ final class APODContentViewModel: Identifiable, ObservableObject {
     func isVideo() -> Bool {
         return false
     }
+    
+    func fetch(queryParms: [URLQueryItem] = []) {
+        let _ = service.$apodData
+            .sink { _ in
+                self.apodData = self.service.apodData
+            }
+        _ = service.serviceData(queryItems: queryParms)
+    }
 
-    init() {
+    init(queryParms: [URLQueryItem] = []) {
         lastFetch = Date()
-        _ = service.serviceData()
+        self.fetch(queryParms: queryParms)
     }
 }
 
 class APODService: NAPIService, ObservableObject {
     @Published private(set) var apodData: APODDataModel = APODDataModel()
-    @Published private(set) var serviceStatus: String = ""
 
-    func serviceData() -> Bool { // -> AnyPublisher<APODDataModel, NAPIServiceError> {
+    func serviceData(queryItems: [URLQueryItem] = []) -> Bool { // -> AnyPublisher<APODDataModel, NAPIServiceError> {
         guard let request = NAPIService.getURLRequestFor(endpoint: "planetary/apod",
-                                                         queryParms: []) else {
+                                                         queryParms: queryItems) else {
             return false
         }
 

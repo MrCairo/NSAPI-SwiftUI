@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4C15E0B425F448E900F9F12D /* NAPIGalleryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15E0B325F448E900F9F12D /* NAPIGalleryApp.swift */; };
-		4C15E0B625F448E900F9F12D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15E0B525F448E900F9F12D /* ContentView.swift */; };
 		4C15E0B825F448EA00F9F12D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C15E0B725F448EA00F9F12D /* Assets.xcassets */; };
 		4C15E0BB25F448EA00F9F12D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C15E0BA25F448EA00F9F12D /* Preview Assets.xcassets */; };
 		4C15E0C625F448EA00F9F12D /* NAPIGalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15E0C525F448EA00F9F12D /* NAPIGalleryTests.swift */; };
@@ -20,11 +19,17 @@
 		4C15E0FF25F500F800F9F12D /* NAPIAboutContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15E0FE25F500F800F9F12D /* NAPIAboutContentView.swift */; };
 		4C15E10525F52D9A00F9F12D /* NAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15E10425F52D9A00F9F12D /* NAPIService.swift */; };
 		4C15E10D25F532C500F9F12D /* APODDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C15E10C25F532C500F9F12D /* APODDataModel.swift */; };
+		4C52DFB6260FA684005BF9EA /* APODContentMixView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFB5260FA684005BF9EA /* APODContentMixView.swift */; };
+		4C52DFBC260FAB0D005BF9EA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFBB260FAB0D005BF9EA /* ImageLoader.swift */; };
+		4C52DFCA260FB0DB005BF9EA /* TextFieldAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFC9260FB0DB005BF9EA /* TextFieldAlertView.swift */; };
+		4C52DFCF2610029C005BF9EA /* NAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFCE2610029C005BF9EA /* NAPIKey.swift */; };
+		4C52DFD4261118AA005BF9EA /* NAPIKeyPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFD3261118AA005BF9EA /* NAPIKeyPromptView.swift */; };
 		4C9390D125FD95C1001710C2 /* APODImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9390D025FD95C1001710C2 /* APODImageView.swift */; };
 		4C9390D625FD95CD001710C2 /* APODVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9390D525FD95CD001710C2 /* APODVideoView.swift */; };
 		4C9390DB25FD95D8001710C2 /* APODTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9390DA25FD95D8001710C2 /* APODTextView.swift */; };
 		4C9DEB7A2600CA8300B14894 /* APODContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DEB792600CA8300B14894 /* APODContentViewModel.swift */; };
 		4CAD4B0A25F9AB620057BB5E /* APODContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD4B0925F9AB620057BB5E /* APODContentView.swift */; };
+		4CEE180B26096F0C00C34213 /* NAPIDateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEE180A26096F0C00C34213 /* NAPIDateSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +52,6 @@
 /* Begin PBXFileReference section */
 		4C15E0B025F448E900F9F12D /* NAPIGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NAPIGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C15E0B325F448E900F9F12D /* NAPIGalleryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIGalleryApp.swift; sourceTree = "<group>"; };
-		4C15E0B525F448E900F9F12D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4C15E0B725F448EA00F9F12D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C15E0BA25F448EA00F9F12D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4C15E0BC25F448EA00F9F12D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,11 +68,17 @@
 		4C15E0FE25F500F800F9F12D /* NAPIAboutContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIAboutContentView.swift; sourceTree = "<group>"; };
 		4C15E10425F52D9A00F9F12D /* NAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIService.swift; sourceTree = "<group>"; };
 		4C15E10C25F532C500F9F12D /* APODDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODDataModel.swift; sourceTree = "<group>"; };
+		4C52DFB5260FA684005BF9EA /* APODContentMixView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODContentMixView.swift; sourceTree = "<group>"; };
+		4C52DFBB260FAB0D005BF9EA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		4C52DFC9260FB0DB005BF9EA /* TextFieldAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertView.swift; sourceTree = "<group>"; };
+		4C52DFCE2610029C005BF9EA /* NAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIKey.swift; sourceTree = "<group>"; };
+		4C52DFD3261118AA005BF9EA /* NAPIKeyPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIKeyPromptView.swift; sourceTree = "<group>"; };
 		4C9390D025FD95C1001710C2 /* APODImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODImageView.swift; sourceTree = "<group>"; };
 		4C9390D525FD95CD001710C2 /* APODVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODVideoView.swift; sourceTree = "<group>"; };
 		4C9390DA25FD95D8001710C2 /* APODTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODTextView.swift; sourceTree = "<group>"; };
 		4C9DEB792600CA8300B14894 /* APODContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODContentViewModel.swift; sourceTree = "<group>"; };
 		4CAD4B0925F9AB620057BB5E /* APODContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODContentView.swift; sourceTree = "<group>"; };
+		4CEE180A26096F0C00C34213 /* NAPIDateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIDateSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,15 +129,16 @@
 		4C15E0B225F448E900F9F12D /* NAPIGallery */ = {
 			isa = PBXGroup;
 			children = (
+				4C52DFBA260FAAF7005BF9EA /* Services */,
+				4CEE180926096EF100C34213 /* Views */,
 				4C15E11425F54ABA00F9F12D /* APOD */,
-				4C15E0B525F448E900F9F12D /* ContentView.swift */,
 				4C15E0B325F448E900F9F12D /* NAPIGalleryApp.swift */,
+				4C52DFCE2610029C005BF9EA /* NAPIKey.swift */,
 				4C15E0E725F46A2100F9F12D /* NAPIMainContentView.swift */,
 				4C15E0FE25F500F800F9F12D /* NAPIAboutContentView.swift */,
 				4C15E0EC25F46A8E00F9F12D /* NAPIMenuModel.swift */,
 				4C15E0F125F46B2000F9F12D /* NAPIMenuNavigationLink.swift */,
 				4C15E0F625F46B5400F9F12D /* NAPIMenuCell.swift */,
-				4C15E10425F52D9A00F9F12D /* NAPIService.swift */,
 				4C15E0B725F448EA00F9F12D /* Assets.xcassets */,
 				4C15E0BC25F448EA00F9F12D /* Info.plist */,
 				4C15E0B925F448EA00F9F12D /* Preview Content */,
@@ -164,20 +175,30 @@
 		4C15E11425F54ABA00F9F12D /* APOD */ = {
 			isa = PBXGroup;
 			children = (
+				4CAD4B0925F9AB620057BB5E /* APODContentView.swift */,
 				4C9DEB752600CA1600B14894 /* ViewModel */,
 				4C9DEB742600CA1000B14894 /* Model */,
 				4C9DEB732600CA0800B14894 /* View */,
-				4C9390D025FD95C1001710C2 /* APODImageView.swift */,
-				4C9390D525FD95CD001710C2 /* APODVideoView.swift */,
-				4C9390DA25FD95D8001710C2 /* APODTextView.swift */,
-				4CAD4B0925F9AB620057BB5E /* APODContentView.swift */,
 			);
 			path = APOD;
+			sourceTree = "<group>";
+		};
+		4C52DFBA260FAAF7005BF9EA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4C52DFBB260FAB0D005BF9EA /* ImageLoader.swift */,
+				4C15E10425F52D9A00F9F12D /* NAPIService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		4C9DEB732600CA0800B14894 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4C9390D025FD95C1001710C2 /* APODImageView.swift */,
+				4C9390D525FD95CD001710C2 /* APODVideoView.swift */,
+				4C9390DA25FD95D8001710C2 /* APODTextView.swift */,
+				4C52DFB5260FA684005BF9EA /* APODContentMixView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +217,16 @@
 				4C9DEB792600CA8300B14894 /* APODContentViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4CEE180926096EF100C34213 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CEE180A26096F0C00C34213 /* NAPIDateSelectionView.swift */,
+				4C52DFC9260FB0DB005BF9EA /* TextFieldAlertView.swift */,
+				4C52DFD3261118AA005BF9EA /* NAPIKeyPromptView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,18 +358,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C52DFCA260FB0DB005BF9EA /* TextFieldAlertView.swift in Sources */,
 				4C9DEB7A2600CA8300B14894 /* APODContentViewModel.swift in Sources */,
 				4C9390D125FD95C1001710C2 /* APODImageView.swift in Sources */,
 				4C15E0ED25F46A8E00F9F12D /* NAPIMenuModel.swift in Sources */,
 				4C15E0E825F46A2100F9F12D /* NAPIMainContentView.swift in Sources */,
+				4C52DFCF2610029C005BF9EA /* NAPIKey.swift in Sources */,
 				4C9390DB25FD95D8001710C2 /* APODTextView.swift in Sources */,
+				4CEE180B26096F0C00C34213 /* NAPIDateSelectionView.swift in Sources */,
 				4C15E0F725F46B5400F9F12D /* NAPIMenuCell.swift in Sources */,
-				4C15E0B625F448E900F9F12D /* ContentView.swift in Sources */,
 				4C15E0F225F46B2000F9F12D /* NAPIMenuNavigationLink.swift in Sources */,
 				4C9390D625FD95CD001710C2 /* APODVideoView.swift in Sources */,
 				4CAD4B0A25F9AB620057BB5E /* APODContentView.swift in Sources */,
+				4C52DFBC260FAB0D005BF9EA /* ImageLoader.swift in Sources */,
+				4C52DFB6260FA684005BF9EA /* APODContentMixView.swift in Sources */,
 				4C15E10525F52D9A00F9F12D /* NAPIService.swift in Sources */,
 				4C15E10D25F532C500F9F12D /* APODDataModel.swift in Sources */,
+				4C52DFD4261118AA005BF9EA /* NAPIKeyPromptView.swift in Sources */,
 				4C15E0FF25F500F800F9F12D /* NAPIAboutContentView.swift in Sources */,
 				4C15E0B425F448E900F9F12D /* NAPIGalleryApp.swift in Sources */,
 			);
@@ -507,7 +543,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.committedcode.NAPIGallery;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.committed-code.napi-gallery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -529,7 +565,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.committedcode.NAPIGallery;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.committed-code.napi-gallery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
