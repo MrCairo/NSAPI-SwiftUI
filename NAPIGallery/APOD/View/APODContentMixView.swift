@@ -12,6 +12,7 @@ struct APODContentMixView: View {
     
     var body: some View {
         APODTextView(text: data.description)
+            .padding()
             .frame(minWidth: 0,
                    maxWidth: .infinity,
                    minHeight: 0,
@@ -24,7 +25,6 @@ struct APODContentMixView: View {
                        maxWidth: .infinity,
                        minHeight: 0,
                        maxHeight: .infinity)
-            
         } else {
             APODVideoView(mediaType: .video,
                           mediaData: data.url?.absoluteString.data(using: .utf8) ?? Data())
