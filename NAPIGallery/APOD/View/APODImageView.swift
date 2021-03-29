@@ -24,7 +24,7 @@ struct APODImageView: View {
     
     /// Observing changes in the ImageLoader.
     /// This would really be just the change in the Image object within the loader
-    @ObservedObject private var loader = ImageLoader()
+    @StateObject private var loader = ImageLoader()
 
     var body: some View {
         if let string = String(data: mediaData, encoding: .utf8) {
