@@ -10,63 +10,58 @@ import Combine
 
 struct APODContentView: View {
     @State private var showingPopover = false
-    @State private var date = SelectedDate(startDate: Date())
+    @StateObject var date = SelectedDate(startDate: Date())
     @State private var apodData = APODDataModel()
-    private var viewModel = APODContentViewModel()
-
-    let emptyData = Data()
+    @StateObject private var viewModel = APODContentViewModel()
     
     var body: some View {
         HStack {
             VStack {
-                if let title = (viewModel.service.apodData.title) {
+                if let title = (viewModel.title) {
                     Text(title)
                         .font(.title)
+                        .lineLimit(3)
+                        .multilineTextAlignment(.center)
                 }
+                // Display the date
+                Text(NAPIService.standardDateString(date.startDate))
+                        .font(.headline)
                 
                 GeometryReader { geo in
                     if geo.size.height > geo.size.width {
                         VStack {
-                            APODContentMixView(data: viewModel.service.apodData)
+                            APODContentMixView(data: viewModel.apodData)
                         }
                     } else {
                         HStack {
-                            APODContentMixView(data: viewModel.service.apodData)
+                            APODContentMixView(data: viewModel.apodData)
                         }
                     }
                 }
             }
             .onAppear(perform: {
-                let dateString = NAPIService.standardDateString(date.startDate)
-                let item = URLQueryItem(name: "date", value: dateString)
-                let _ = viewModel.$apodData
-                    .sink {
-                        self.apodData = $0
-                    }
-                viewModel.fetch(queryParms: [item])
+                callService()
             })
+            .sheet(isPresented: $showingPopover, onDismiss: {
+                callService()
+            }) {
+                NAPIDateSelectionView(viewPresented: $showingPopover, selectedDate: $date.startDate)
+            }
         }
         .navigationBarItems(trailing: Button(action: { showingPopover = true},
                                             label: {
-                                                Label("Info", systemImage: "info.circle")
+                                                Label("Select Date", systemImage: "calendar")
                                                     .labelStyle(IconOnlyLabelStyle())
         }))
-        .sheet(isPresented: $showingPopover, onDismiss: {
-            print("dismissed")
-        }) {
-            NAPIDateSelectionView(viewPresented: $showingPopover, selectedDate: $date)
-        }
     }
-}
-
-
-private struct InfoLinkButton<Destination : View>: View {
-    var destination:  Destination
     
-    var body: some View {
-        NavigationLink(destination: self.destination) { Image(systemName: "info.circle") }
+    private func callService() {
+        let dateString = NAPIService.standardDateString(date.startDate)
+        let item = URLQueryItem(name: "date", value: dateString)
+        _ = viewModel.fetch(queryParms: [item])
     }
 }
+
 
 #if DEBUG
 struct APODContentView_Previews: PreviewProvider {

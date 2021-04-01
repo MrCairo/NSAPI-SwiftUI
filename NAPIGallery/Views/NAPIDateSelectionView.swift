@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-class SelectedDate {
-    var startDate: Date = Date.distantPast
-    var endDate: Date = Date.distantFuture
+class SelectedDate: ObservableObject {
+    @Published var startDate: Date = Date.distantPast
+    @Published var endDate: Date = Date.distantFuture
     
     init(startDate: Date, endDate: Date = Date.distantFuture) {
         self.startDate = startDate
@@ -19,8 +19,19 @@ class SelectedDate {
 
 struct NAPIDateSelectionView: View {
     @Binding var viewPresented: Bool
-    @Binding var selectedDate: SelectedDate
+    @Binding var selectedDate: Date
+//    @Binding var selectedDate: SelectedDate
     @State private var pickerDate = SelectedDate(startDate: Date())
+    
+    private let dateRange: ClosedRange<Date> = {
+        let calendar = Calendar.current
+        let defStart = Date(timeIntervalSince1970: TimeInterval(805872747))
+        let startComponents = DateComponents(year: 1995, month: 7, day: 16)
+        let endComponents = calendar.dateComponents([.year, .month, .day], from: Date())
+        return (calendar.date(from:startComponents) ?? defStart)
+            ...
+            (calendar.date(from:endComponents) ?? Date())
+    }()
     
     private var dateProxy: Binding<Date> {
         Binding<Date>(get: { self.pickerDate.startDate }, set: {
@@ -37,12 +48,13 @@ struct NAPIDateSelectionView: View {
                 DatePicker(
                     "Start Date",
                     selection: dateProxy,
+                    in: dateRange,
                     displayedComponents: [.date]
                 )
             }
             Button("Done") {
                 viewPresented = false
-                selectedDate = self.pickerDate
+                selectedDate = self.pickerDate.startDate
                 print("Picked Date: \(pickerDate.startDate)")
             }
         }

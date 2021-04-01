@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct APODTextView: View {
-    @State var text = "Hello, World!"
-    @State private var textStyle = UIFont.TextStyle.body
+    let text: String
+    private let textStyle = UIFont.TextStyle.body
 
     var body: some View {
-        APODUITextView(text: $text, textStyle: $textStyle)
+        APODUITextView(text: text, textStyle: textStyle)
     }
 }
 
-
 struct APODUITextView: UIViewRepresentable {
-
-    @Binding var text: String
-    @Binding var textStyle: UIFont.TextStyle
+    var text: String
+    var textStyle: UIFont.TextStyle
 
     func makeUIView(context: Context) -> UITextView {
         let textView = UITextView()

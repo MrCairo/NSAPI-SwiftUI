@@ -10,31 +10,38 @@ import UIKit
 
 let imageExt = ["jpg", "jpeg", "png", "gif"]
 
-final class APODContentViewModel: Identifiable, ObservableObject {
+final class APODContentViewModel: NAPIService, Identifiable, ObservableObject {
     @Published private(set) var apodData = APODDataModel()
     @Published private(set) var imageData = Data()
 
-    private(set) var service: APODService = APODService()
     private var lastFetch = Date()
     
     var title: String {
-        return service.apodData.title
+        return apodData.title
     }
     
     var description: String {
-        return service.apodData.description
+        return apodData.explanation ?? ""
+    }
+
+    var explanation: String {
+        return self.description
     }
 
     var url: URL? {
-        return service.apodData.url
+        return URL(string: apodData.url ?? "")
+    }
+    
+    var hdurl: URL? {
+        return URL(string: apodData.hdurl ?? "")
     }
 
     var copyright: String? {
-        return service.apodData.copyright
+        return apodData.copyright
     }
 
     func isImage() -> Bool {
-        return service.apodData.mediaType == "image" && !imageData.isEmpty
+        return apodData.isImage() && !imageData.isEmpty
     }
 
     func uiImage() -> UIImage? {
@@ -63,17 +70,38 @@ final class APODContentViewModel: Identifiable, ObservableObject {
         return false
     }
     
-    func fetch(queryParms: [URLQueryItem] = []) {
-        let _ = service.$apodData
-            .sink { _ in
-                self.apodData = self.service.apodData
-            }
-        _ = service.serviceData(queryItems: queryParms)
+//    func fetch(queryParms: [URLQueryItem] = []) {
+//        let _ = $apodData
+//            .sink { _ in
+//                self.apodData = self.service.apodData
+//            }
+//        _ = serviceData(queryItems: queryParms)
+//    }
+    
+    func fetch(queryParms: [URLQueryItem] = []) -> Bool { // -> AnyPublisher<APODDataModel, NAPIServiceError> {
+        guard let request = NAPIService.getURLRequestFor(endpoint: "planetary/apod",
+                                                         queryParms: queryParms) else {
+            return false
+        }
+
+        URLSession.shared.dataTaskPublisher(for: request)
+            .map(\.data)
+            .decode(
+                type: APODDataModel.self,
+                decoder: JSONDecoder()
+            )
+            .replaceError(with: APODDataModel())
+            .eraseToAnyPublisher()
+            .receive(on: DispatchQueue.main)
+            .assign(to: &$apodData)
+        
+        return true
     }
+
 
     init(queryParms: [URLQueryItem] = []) {
         lastFetch = Date()
-        self.fetch(queryParms: queryParms)
+//        self.fetch(queryParms: queryParms)
     }
 }
 

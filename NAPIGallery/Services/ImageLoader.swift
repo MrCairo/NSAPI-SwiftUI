@@ -26,15 +26,13 @@ struct CachedImage {
 ///
 class ImageLoader: ObservableObject {
 
+    public static let shared = ImageLoader()
+    
     @Published var image: UIImage?
 
     private var cancellable: AnyCancellable?
     private var cache: [String: CachedImage] = [:]
     
-    init() {
-        self.cache(UIImage(systemName: "xmark.octagon"), urlString: "__error")
-    }
-
     deinit {
         cancellable?.cancel()
     }
@@ -85,5 +83,9 @@ class ImageLoader: ObservableObject {
 
     func cancel() {
         cancellable?.cancel()
+    }
+    
+    private init() {
+        self.cache(UIImage(systemName: "xmark.octagon"), urlString: "__error")
     }
 }
