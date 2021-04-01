@@ -24,6 +24,7 @@
 		4C52DFCA260FB0DB005BF9EA /* TextFieldAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFC9260FB0DB005BF9EA /* TextFieldAlertView.swift */; };
 		4C52DFCF2610029C005BF9EA /* NAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFCE2610029C005BF9EA /* NAPIKey.swift */; };
 		4C52DFD4261118AA005BF9EA /* NAPIKeyPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFD3261118AA005BF9EA /* NAPIKeyPromptView.swift */; };
+		4C52DFEB26149EDC005BF9EA /* NAPIActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFEA26149EDC005BF9EA /* NAPIActivityIndicatorView.swift */; };
 		4C9390D125FD95C1001710C2 /* APODImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9390D025FD95C1001710C2 /* APODImageView.swift */; };
 		4C9390D625FD95CD001710C2 /* APODVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9390D525FD95CD001710C2 /* APODVideoView.swift */; };
 		4C9390DB25FD95D8001710C2 /* APODTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9390DA25FD95D8001710C2 /* APODTextView.swift */; };
@@ -73,6 +74,7 @@
 		4C52DFC9260FB0DB005BF9EA /* TextFieldAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldAlertView.swift; sourceTree = "<group>"; };
 		4C52DFCE2610029C005BF9EA /* NAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIKey.swift; sourceTree = "<group>"; };
 		4C52DFD3261118AA005BF9EA /* NAPIKeyPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIKeyPromptView.swift; sourceTree = "<group>"; };
+		4C52DFEA26149EDC005BF9EA /* NAPIActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIActivityIndicatorView.swift; sourceTree = "<group>"; };
 		4C9390D025FD95C1001710C2 /* APODImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODImageView.swift; sourceTree = "<group>"; };
 		4C9390D525FD95CD001710C2 /* APODVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODVideoView.swift; sourceTree = "<group>"; };
 		4C9390DA25FD95D8001710C2 /* APODTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODTextView.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				4CEE180A26096F0C00C34213 /* NAPIDateSelectionView.swift */,
 				4C52DFC9260FB0DB005BF9EA /* TextFieldAlertView.swift */,
 				4C52DFD3261118AA005BF9EA /* NAPIKeyPromptView.swift */,
+				4C52DFEA26149EDC005BF9EA /* NAPIActivityIndicatorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				4C15E0F725F46B5400F9F12D /* NAPIMenuCell.swift in Sources */,
 				4C15E0F225F46B2000F9F12D /* NAPIMenuNavigationLink.swift in Sources */,
 				4C9390D625FD95CD001710C2 /* APODVideoView.swift in Sources */,
+				4C52DFEB26149EDC005BF9EA /* NAPIActivityIndicatorView.swift in Sources */,
 				4CAD4B0A25F9AB620057BB5E /* APODContentView.swift in Sources */,
 				4C52DFBC260FAB0D005BF9EA /* ImageLoader.swift in Sources */,
 				4C52DFB6260FA684005BF9EA /* APODContentMixView.swift in Sources */,
