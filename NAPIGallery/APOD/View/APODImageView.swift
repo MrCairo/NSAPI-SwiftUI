@@ -28,20 +28,7 @@ struct APODImageView: View {
             // The image is located via a URL. Could also be a file URL
             case .imageURL:
                 if string.hasPrefix("http") || string.hasPrefix("file") {
-                    if let image = loader.load(string) {
-                        return AnyView(Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill))
-                    } else {
-                        // We add this NavigationView because it takes up the entire
-                        // view bounds and thus can be centered properly. I'm sure there
-                        // is a better way of doing it...
-                        return AnyView(NAPIActivityIndicatorView(isShowing: $showAI) {
-                            NavigationView {
-                                Text("")
-                            }
-                        })
-                    }
+                    return AnyView(remoteImage(urlString: string))
                 } else {
                     // The image URL wasn't a URL (http(s):// or file://) so try to
                     // load it as a system type image.
@@ -91,6 +78,24 @@ struct APODImageView: View {
             newImage = Image(name)
         }
         return newImage
+    }
+    
+    func remoteImage(urlString: String) -> some View {
+        if let image = loader.load(urlString) {
+            return AnyView(Image(uiImage: image)
+                .resizable()
+                .aspectRatio(contentMode: .fill))
+        } else {
+            // We add this NavigationView because it takes up the entire
+            // view bounds and thus can be centered properly. I'm sure there
+            // is a better way of doing it...
+            return AnyView(NAPIActivityIndicatorView(isShowing: $showAI) {
+                List {
+                    Text("")
+                }
+            }
+            .aspectRatio(contentMode: .fit))
+        }
     }
     
     static func failImage() -> some View {

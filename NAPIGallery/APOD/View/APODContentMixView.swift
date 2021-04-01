@@ -9,34 +9,46 @@ import SwiftUI
 
 struct APODContentMixView: View {
     let data: APODDataModel
+    
     @State var showingPopover = true
+    @State var maxHeight: CGFloat = .infinity
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     
     var body: some View {
-        APODTextView(text: data.explanation ?? "Missing Explanation")
-            .padding()
-            .frame(minWidth: 0,
-                   maxWidth: .infinity,
-                   minHeight: 0,
-                   maxHeight: .infinity)
-        
-        if (data.isImage()) {
-            APODImageView(mediaType: (data.mediaURL() != nil) ? .imageURL : .imageData,
-                          mediaData: data.mediaURL()?.absoluteString.data(using: .utf8) ?? Data())
-                .frame(minWidth: 0,
-                       maxWidth: .infinity,
-                       minHeight: 0,
-                       maxHeight: .infinity)
-                .scaledToFit()
-                .onTapGesture {
-                    showingPopover = true
+        ScrollView {
+            VStack {
+                if (data.isImage()) {
+                    APODImageView(mediaType: (data.mediaURL() != nil) ? .imageURL : .imageData,
+                                  mediaData: data.mediaURL()?.absoluteString.data(using: .utf8) ?? Data())
+                        .scaleEffect((self.horizontalSizeClass ?? .compact) == .compact ? 1.0 : 0.75)
+                        .onTapGesture {
+                            showingPopover = true
+                        }
+                } else {
+                    APODVideoView(mediaType: .video,
+                                  mediaData: data.mediaURL()?.absoluteString.data(using: .utf8) ?? Data())
+                        .scaleEffect((self.horizontalSizeClass ?? .compact) == .compact ? 1.0 : 0.75)
                 }
+                Spacer()
+                Text(data.explanation ?? "Description not provided.")
+                    .padding()
+                //            APODTextView(text: data.explanation ?? "Missing Explanation")
+                //                .padding()
+                //                .scaledToFit()
+                ////                .frame(minWidth: 0,
+                ////                       maxWidth: .infinity,
+                ////                       minHeight: 200,
+                ////                       maxHeight: .infinity)
+            }
+        }
+    }
+    
+    func maxHeight(geo: GeometryProxy) -> CGFloat {
+        if geo.size.height < geo.size.width {
+            return .infinity
         } else {
-            APODVideoView(mediaType: .video,
-                          mediaData: data.mediaURL()?.absoluteString.data(using: .utf8) ?? Data())
-                .frame(minWidth: 0,
-                       maxWidth: .infinity,
-                       minHeight: 0,
-                       maxHeight: .infinity)
+            return geo.size.height / 2
         }
     }
 }
