@@ -12,7 +12,8 @@ struct APODVideoView: View {
     let mediaType: APODMediaType
     let mediaData: Data
     let id = UUID()
-    let errorImage = APODImageView.imageFromName("system:exclamationmark.triangle.fill")
+    
+    @State var activityShowing = true
     
     var body: some View {
         if let string = String(data: mediaData, encoding: .utf8) {
@@ -22,14 +23,20 @@ struct APODVideoView: View {
                     let request = URLRequest(url: url)
                     // We use the WebView to play videos vs. VideoPlayer for simplicity
                     WebView(request: request)
+                        .aspectRatio(contentMode: .fit)
                 } else {
-                    errorImage
+                    NAPIActivityIndicatorView(isShowing: $activityShowing) {
+                        List {
+                            Text("")
+                        }
+                    }
+                    .aspectRatio(contentMode: .fit)
                 }
             default:
-                errorImage
+                APODImageView.failImage()
             }
         } else {
-            errorImage
+            APODImageView.failImage()
         }
     }
 }
