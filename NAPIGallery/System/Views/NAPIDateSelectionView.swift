@@ -20,7 +20,6 @@ class SelectedDate: ObservableObject {
 struct NAPIDateSelectionView: View {
     @Binding var viewPresented: Bool
     @Binding var selectedDate: Date
-//    @Binding var selectedDate: SelectedDate
     @State private var pickerDate = SelectedDate(startDate: Date())
     
     private let dateRange: ClosedRange<Date> = {
@@ -46,16 +45,22 @@ struct NAPIDateSelectionView: View {
             Spacer()
             Form {
                 DatePicker(
-                    "Start Date",
+                    "Start Date:",
                     selection: dateProxy,
                     in: dateRange,
                     displayedComponents: [.date]
                 )
-            }
-            Button("Done") {
-                viewPresented = false
-                selectedDate = self.pickerDate.startDate
-                print("Picked Date: \(pickerDate.startDate)")
+                HStack {
+                    Button("Cancel") {
+                        viewPresented = false
+                    }
+                    .foregroundColor(.red)
+                    Spacer()
+                    Button("Done") {
+                        viewPresented = false
+                        selectedDate = self.pickerDate.startDate
+                    }
+                }
             }
         }
     }
@@ -67,9 +72,10 @@ struct NAPIDateSelectionView: View {
     }
 }
 
-//
-//struct NAPIDateSelectionView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NAPIDateSelectionView()
-//    }
-//}
+#if DEBUG
+struct NAPIDateSelectionView_Previews: PreviewProvider {
+    static var previews: some View {
+        NAPIDateSelectionView(viewPresented: .constant(true), selectedDate: .constant(Date()))
+    }
+}
+#endif

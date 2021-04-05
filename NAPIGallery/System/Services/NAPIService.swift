@@ -50,7 +50,8 @@ public class NAPIService {
     /// - returns: A ```URLRequest``` object or nil if unable to initialize the request.
     ///
     class func getURLRequestFor(endpoint: String,
-                                queryParms parms:[URLQueryItem]) -> URLRequest? {
+                                queryParms parms:[URLQueryItem],
+                                failURLRequest: URLRequest = URLRequest(url: URL(fileURLWithPath: "."))) -> URLRequest {
         //
         // Sorta clean the parms by removing an existing "api_key" value and
         // then adding in the one with the correct value.
@@ -59,8 +60,12 @@ public class NAPIService {
 
         guard let url = baseURL
                 .appendingPathComponent(endpoint)
-                .withQueries(cleaned) else { return nil }
-
+                .withQueries(cleaned) else { return failURLRequest }
+        
+        #if DEBUG
+        print("NAPIService GET: \(url)")
+        #endif
+        
         return URLRequest(url: url, cachePolicy: .reloadIgnoringCacheData, timeoutInterval: TimeInterval(30))
     }
     

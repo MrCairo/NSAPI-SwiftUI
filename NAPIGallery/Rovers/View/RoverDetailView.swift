@@ -1,0 +1,45 @@
+//
+//  RoverDetailView.swift
+//  NAPIGallery
+//
+//  Created by Mitch Fisher on 4/3/21.
+//
+
+import SwiftUI
+
+struct RoverDetailView: View {
+    
+    let rover: RoverType
+    @State var imageDataModel: RoverImageDataModel = RoverImageDataModel()
+    
+    var body: some View {
+        List {
+            Text("Hello")
+        }
+    }
+
+//    private func remoteImage(urlString: String) -> some View {
+//        if let image = ImageLoader.shared.load(urlString) {
+//            return AnyView(Image(uiImage: image)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit))
+//        } else {
+//            // We add this NavigationView because it takes up the entire
+//            // view bounds and thus can be centered properly. I'm sure there
+//            // is a better way of doing it...
+//            return AnyView(NAPIActivityIndicatorView(isShowing: $showAI) {
+//                List {
+//                    Text("")
+//                }
+//            }
+//            .aspectRatio(contentMode: .fit))
+//        }
+//    }
+
+}
+
+struct RoverDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        RoverDetailView(rover: .curiosity)
+    }
+}

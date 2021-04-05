@@ -58,7 +58,7 @@ struct APODContentView: View {
     private func callService() {
         let dateString = NAPIService.standardDateString(date.startDate)
         let item = URLQueryItem(name: "date", value: dateString)
-        _ = viewModel.fetch(queryParms: [item])
+        viewModel.fetch(queryParms: [item])
     }
 }
 

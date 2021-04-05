@@ -1,0 +1,19 @@
+{
+  "id": 820369,
+  "sol": 3078,
+  "camera": {
+    "id": 23,
+    "name": "CHEMCAM",
+    "rover_id": 5,
+    "full_name": "Chemistry and Camera Complex"
+  },
+  "img_src": "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/03078/opgs/edr/ccam/CR0_670742929EDR_F0871444CCAM01078M_.JPG",
+  "earth_date": "2021-04-03",
+  "rover": {
+    "id": 5,
+    "name": "Curiosity",
+    "landing_date": "2012-08-06",
+    "launch_date": "2011-11-26",
+    "status": "active"
+  }
+}

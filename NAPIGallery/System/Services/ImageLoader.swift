@@ -20,6 +20,32 @@ struct CachedImage {
     }
 }
 
+class ImageCache {
+    static public let shared = ImageCache()
+    private var cache: [String: CachedImage] = [:]
+    
+    public func store(cachedImage: CachedImage, identifiedBy: String) -> Bool {
+        if cache[identifiedBy] == nil {
+            cache[identifiedBy] = cachedImage
+            return true
+        }
+        
+        return false
+    }
+    
+    public func cachedImage(identifiedBy: String) -> CachedImage? {
+        return cache[identifiedBy]
+    }
+    
+    public func removeCachedImage(identifiedBy: String) -> Bool {
+        let found = cache[identifiedBy] != nil
+        if found {
+            cache.removeValue(forKey: identifiedBy)
+        }
+        return found
+    }
+}
+
 ///
 /// Loads an image and retrurns is by way of the @ObservableObject protocol.
 /// The image is cached for performance and only refreshed after 3600 seconds.

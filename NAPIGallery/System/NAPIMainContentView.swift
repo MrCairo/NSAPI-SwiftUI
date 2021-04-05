@@ -16,6 +16,7 @@ struct NAPIMainContentView: View {
     
     let menuItems = [
         NAPIMenuItem(title: "APOD", description: "Astronomical Picture of the Day", targetType: .apod),
+        NAPIMenuItem(title: "Rovers", description: "Martian Rover Imagery", targetType: .rovers),
         NAPIMenuItem(title: "About", description: "Something about this app", targetType: .about)
     ]
     

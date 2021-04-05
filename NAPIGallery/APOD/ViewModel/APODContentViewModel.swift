@@ -8,13 +8,16 @@ import Foundation
 import Combine
 import UIKit
 
-let imageExt = ["jpg", "jpeg", "png", "gif"]
+fileprivate let imageExt = ["jpg", "jpeg", "png", "gif"]
 
 final class APODContentViewModel: NAPIService, Identifiable, ObservableObject {
     @Published private(set) var apodData = APODDataModel()
     @Published private(set) var imageData = Data()
 
     private var lastFetch = Date()
+    private var queryItems = [URLQueryItem]()
+    private var urlRequest = URLRequest(url: URL(fileURLWithPath: "."))
+    private var cancellables = Set<AnyCancellable>()
     
     var title: String {
         return apodData.title
@@ -70,62 +73,69 @@ final class APODContentViewModel: NAPIService, Identifiable, ObservableObject {
         return false
     }
     
-//    func fetch(queryParms: [URLQueryItem] = []) {
-//        let _ = $apodData
-//            .sink { _ in
-//                self.apodData = self.service.apodData
-//            }
-//        _ = serviceData(queryItems: queryParms)
-//    }
     
-    func fetch(queryParms: [URLQueryItem] = []) -> Bool { // -> AnyPublisher<APODDataModel, NAPIServiceError> {
-        guard let request = NAPIService.getURLRequestFor(endpoint: "planetary/apod",
-                                                         queryParms: queryParms) else {
-            return false
-        }
+//    private var apodDataPublisher: AnyPublisher<APODDataModel, Never> {
+//        URLSession.shared.dataTaskPublisher(for: urlRequest)
+//            .map(\.data)
+//            .decode(
+//                type: APODDataModel.self,
+//                decoder: JSONDecoder()
+//            )
+//            .replaceError(with: APODDataModel())
+//            .eraseToAnyPublisher()
+//            .receive(on: DispatchQueue.main)
+//            .assign(to: &$apodData)
+//    }
 
-        URLSession.shared.dataTaskPublisher(for: request)
+    func fetch(queryParms: [URLQueryItem] = []) {
+        queryItems = queryParms
+        urlRequest = NAPIService.getURLRequestFor(endpoint: "planetary/apod",
+                                                  queryParms: queryItems)
+
+        URLSession.shared.dataTaskPublisher(for: urlRequest)
             .map(\.data)
             .decode(
                 type: APODDataModel.self,
                 decoder: JSONDecoder()
             )
-            .replaceError(with: APODDataModel())
-            .eraseToAnyPublisher()
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$apodData)
-        
-        return true
+            .replaceError(with: APODDataModel(asFailure: true))
+            .sink { [weak self] model in
+                DispatchQueue.main.sync {
+                    self?.apodData = model
+                }
+            }
+            .store(in: &cancellables)
     }
-
-
+    
     init(queryParms: [URLQueryItem] = []) {
         lastFetch = Date()
-//        self.fetch(queryParms: queryParms)
+        queryItems = queryParms
+        self.urlRequest = NAPIService.getURLRequestFor(endpoint: "planetary/apod",
+                                                       queryParms: queryItems)
     }
 }
 
-class APODService: NAPIService, ObservableObject {
-    @Published private(set) var apodData: APODDataModel = APODDataModel()
-
-    func serviceData(queryItems: [URLQueryItem] = []) -> Bool { // -> AnyPublisher<APODDataModel, NAPIServiceError> {
-        guard let request = NAPIService.getURLRequestFor(endpoint: "planetary/apod",
-                                                         queryParms: queryItems) else {
-            return false
-        }
-
-        URLSession.shared.dataTaskPublisher(for: request)
-            .map(\.data)
-            .decode(
-                type: APODDataModel.self,
-                decoder: JSONDecoder()
-            )
-            .replaceError(with: APODDataModel())
-            .eraseToAnyPublisher()
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$apodData)
-        
-        return true
-    }
-}
-
+//class APODService: NAPIService, ObservableObject {
+//    @Published private(set) var apodData: APODDataModel = APODDataModel()
+//
+//    func serviceData(queryItems: [URLQueryItem] = []) -> Bool { // -> AnyPublisher<APODDataModel, NAPIServiceError> {
+//        guard let request = NAPIService.getURLRequestFor(endpoint: "planetary/apod",
+//                                                         queryParms: queryItems) else {
+//            return false
+//        }
+//
+//        URLSession.shared.dataTaskPublisher(for: request)
+//            .map(\.data)
+//            .decode(
+//                type: APODDataModel.self,
+//                decoder: JSONDecoder()
+//            )
+//            .replaceError(with: APODDataModel())
+//            .eraseToAnyPublisher()
+//            .receive(on: DispatchQueue.main)
+//            .assign(to: &$apodData)
+//        
+//        return true
+//    }
+//}
+//
