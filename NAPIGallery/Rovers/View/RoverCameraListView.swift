@@ -25,20 +25,11 @@ struct RoverCameraListView: View {
     }
     
     private var photoList: some View {
-        if let latest = self.viewModel.model.latestPhotos {
-            return List(latest) { photo in
-                RoverMenuNavigationLink(menuItem: NAPIMenuItem(title: "Rover Image",
-                                                               description: photo.camera.fullName,
-                                                               targetType: .roverImageDetail),
-                                        roverImageDataModel: photo)
-            }
-        } else {
-            return List(viewModel.model.photos ?? [RoverImageDataModel]()) { photo in
-                RoverMenuNavigationLink(menuItem: NAPIMenuItem(title: "Rover Image",
-                                                               description: photo.camera.fullName,
-                                                               targetType: .roverImageDetail),
-                                        roverImageDataModel: photo)
-            }
+        return List(self.viewModel.aggregate) { camData in
+            RoverMenuNavigationLink(menuItem: NAPIMenuItem(title: "Rover Image",
+                                                           description: camData.cameraName,
+                                                           targetType: .roverImageDetail),
+                                    roverImageDataModel: camData)
         }
     }
 }

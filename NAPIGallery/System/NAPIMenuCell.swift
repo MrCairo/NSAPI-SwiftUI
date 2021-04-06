@@ -22,6 +22,8 @@ struct NAPIMenuCell: View, Identifiable {
                 Text(info.title)
                     .fontWeight(.bold)
                     .font(.title)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
                 Text(info.description)
                     .font(.headline)
             }

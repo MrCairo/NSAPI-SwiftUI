@@ -32,9 +32,13 @@ private let menuItems = [
                  imageName: "Rover_Spirit_Small",
                  targetType: .roverSpirit),
     NAPIMenuItem(title: "Curiosity",
-                 description: "Mars Exploration Rover – A",
-                 imageName: "Rover_Spirit_Small",
-                 targetType: .roverCuriosity)
+                 description: "Mars Curiosity Rover",
+                 imageName: "Rover_Curiosity_Small",
+                 targetType: .roverCuriosity),
+    NAPIMenuItem(title: "Perseverance",
+                 description: "Mars Perseverance Rover",
+                 imageName: "Rover_Perseverance_Small",
+                 targetType: .roverPerseverance)
 ]
 
 

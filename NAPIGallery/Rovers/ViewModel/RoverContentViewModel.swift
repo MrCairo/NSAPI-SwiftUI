@@ -15,12 +15,20 @@ public enum RoverType: String {
     case opportunity, spirit, curiosity, perseverance
 }
 
+struct RoverCameraImageData: Identifiable {
+    let cameraName: String
+    let cameraImageData: [RoverImageDataModel]
+    let id = UUID()
+}
+
 final class RoverContentViewModel: NAPIService, Identifiable, ObservableObject {
     public private(set) var roverType: RoverType
+    public private(set) var aggregate = [RoverCameraImageData]()
     @Published private(set) var model = RoverPhotosModel()
-    private let queryParms: [URLQueryItem]
 
+    private let queryParms: [URLQueryItem]
     private var lastFetch = Date()
+    private var cancellables = Set<AnyCancellable>()
     
     public func update(roverType type: RoverType) {
         roverType = type
@@ -50,11 +58,39 @@ final class RoverContentViewModel: NAPIService, Identifiable, ObservableObject {
                 decoder: JSONDecoder()
             )
             .replaceError(with: RoverPhotosModel())
-            .eraseToAnyPublisher()
-            .receive(on: DispatchQueue.main)
-            .assign(to: &$model)
+            .sink { [weak self] model in
+                DispatchQueue.main.sync {
+                    self?.model = model
+                    self?.aggregateModel()
+                }
+            }
+            .store(in: &cancellables)
         
         return true
+    }
+    
+    func aggregateModel() {
+        var cameraName: String = ""
+        let mainArray = model.latestPhotos ?? model.photos
+        var imageDataArray = [RoverImageDataModel]()
+        aggregate.removeAll()
+        
+        cameraName = mainArray?.first?.camera.fullName ?? ""
+        mainArray?.forEach({ (imageModel) in
+            if cameraName != imageModel.camera.fullName {
+                if imageDataArray.count > 0 {
+                    aggregate.append(RoverCameraImageData(cameraName: cameraName,
+                                                          cameraImageData: imageDataArray))
+                }
+                imageDataArray = [RoverImageDataModel]()
+                cameraName = imageModel.camera.fullName
+            }
+            imageDataArray.append(imageModel)
+        })
+        if imageDataArray.count > 0 {
+            aggregate.append(RoverCameraImageData(cameraName: cameraName,
+                                                  cameraImageData: imageDataArray))
+        }
     }
 
 

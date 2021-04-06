@@ -33,7 +33,7 @@ struct APODDataModel: Codable {
     }
     
     func mediaURL() -> URL? {
-        if let theUrl = hdurl ?? url {
+        if let theUrl = url ?? hdurl {
             return URL(string: theUrl)
         }
         return nil

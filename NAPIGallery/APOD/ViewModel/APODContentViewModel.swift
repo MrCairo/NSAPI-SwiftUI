@@ -15,7 +15,6 @@ final class APODContentViewModel: NAPIService, Identifiable, ObservableObject {
     @Published private(set) var imageData = Data()
 
     private var lastFetch = Date()
-    private var queryItems = [URLQueryItem]()
     private var urlRequest = URLRequest(url: URL(fileURLWithPath: "."))
     private var cancellables = Set<AnyCancellable>()
     
@@ -88,9 +87,8 @@ final class APODContentViewModel: NAPIService, Identifiable, ObservableObject {
 //    }
 
     func fetch(queryParms: [URLQueryItem] = []) {
-        queryItems = queryParms
         urlRequest = NAPIService.getURLRequestFor(endpoint: "planetary/apod",
-                                                  queryParms: queryItems)
+                                                  queryParms: queryParms)
 
         URLSession.shared.dataTaskPublisher(for: urlRequest)
             .map(\.data)
@@ -109,9 +107,8 @@ final class APODContentViewModel: NAPIService, Identifiable, ObservableObject {
     
     init(queryParms: [URLQueryItem] = []) {
         lastFetch = Date()
-        queryItems = queryParms
         self.urlRequest = NAPIService.getURLRequestFor(endpoint: "planetary/apod",
-                                                       queryParms: queryItems)
+                                                       queryParms: queryParms)
     }
 }
 

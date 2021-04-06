@@ -12,7 +12,7 @@ import SwiftUI
 ///
 struct RoverMenuNavigationLink: View {
     var menuItem: NAPIMenuItem
-    var roverImageDataModel: RoverImageDataModel? = nil
+    var roverImageDataModel: RoverCameraImageData? = nil
     
     var body: some View {
         switch menuItem.targetType {
@@ -28,8 +28,13 @@ struct RoverMenuNavigationLink: View {
             NavigationLink(destination: RoverCameraListView(rover: .curiosity)) {
                 NAPIMenuCell(info: menuItem)
             }
+        case .roverPerseverance:
+            NavigationLink(destination: RoverCameraListView(rover: .perseverance)) {
+                NAPIMenuCell(info: menuItem)
+            }
         case .roverImageDetail:
-            NavigationLink(destination: RoverDetailView(rover: .curiosity)) {
+            let model = roverImageDataModel ?? RoverCameraImageData(cameraName: "", cameraImageData: [])
+            NavigationLink(destination: RoverDetailView(imageDataModel: model)) {
                 NAPIMenuCell(info: menuItem)
             }
 

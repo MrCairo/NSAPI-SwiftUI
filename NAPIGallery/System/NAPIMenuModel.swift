@@ -14,6 +14,7 @@ enum NAPIMenuTargetType: Int, Codable {
     case roverOpportunity
     case roverSpirit
     case roverCuriosity
+    case roverPerseverance
     case roverImageDetail
 }
 
