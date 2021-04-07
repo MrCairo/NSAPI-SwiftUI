@@ -26,7 +26,7 @@ private class ImageCache {
     private var cache: [String: CachedImage] = [:]
     private var queue = DispatchQueue(label: "ImageCache_SyncQueue")
     private var collector: CacheCollectorTimer = CacheCollectorTimer(timeInterval: 5.0)
-    private let cacheMaxAge: TimeInterval = 20.0
+    private let cacheMaxAge: TimeInterval = 3600.0
     
     public func store(cachedImage: CachedImage, identifiedBy: String) {
         collector.suspend()
@@ -42,10 +42,10 @@ private class ImageCache {
         var image: CachedImage? = nil
         collector.suspend()
         queue.sync {
-            let found = cache.firstIndex { (item) -> Bool in return item.key == identifiedBy }
-            if let idx = found {
-                image = cache[idx].value
+            let found = cache.first { (arg0) -> Bool in
+                let (key, _) = arg0; return key == identifiedBy
             }
+            image = found?.value
         }
         collector.resume()
         return image
