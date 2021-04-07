@@ -74,6 +74,7 @@ private struct NAPIUIActivityIndicator: UIViewRepresentable {
 }
 
 
+#if DEBUG
 struct NAPIActivityIndicatorView_Previews: PreviewProvider {
     static var previews: some View {
         NAPIActivityIndicatorView(isShowing: .constant(true)) {
@@ -94,4 +95,4 @@ struct NAPIActivityIndicatorView_Previews: PreviewProvider {
 //        }
     }
 }
-
+#endif

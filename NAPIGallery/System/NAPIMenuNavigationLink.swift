@@ -20,6 +20,12 @@ struct NAPIMenuNavigationLink: View {
             NavigationLink(destination: APODContentView()) {
                 NAPIMenuCell(info: menuItem)
             }
+        case .rovers:
+            NavigationLink(destination: RoverContentView()) {
+                NAPIMenuCell(info: menuItem)
+            }
+        default:
+            Text("Invalid at this level")
         }
     }
 }
@@ -27,7 +33,9 @@ struct NAPIMenuNavigationLink: View {
 #if DEBUG
 struct NAPINavigationLink_Previews: PreviewProvider {
     static var previews: some View {
-        NAPIMenuNavigationLink(menuItem: NAPIMenuItem(title: "Hobbit", description: "One of the first works of J.R.R Tolkien.", targetType: .apod))
+        NAPIMenuNavigationLink(menuItem: NAPIMenuItem(title: "Hobbit",
+                                                      description: "One of the first works of J.R.R Tolkien.",
+                                                      targetType: .apod))
     }
 }
 #endif

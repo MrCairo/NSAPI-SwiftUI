@@ -18,9 +18,10 @@ struct APODImageView: View {
     
     /// Observing changes in the ImageLoader.
     /// This would really be just the change in the Image object within the loader
-    @StateObject private var loader = ImageLoader.shared
+    @StateObject private var loader = NAPIImageLoader()
     @State private var showAI: Bool = true
-
+    @State private var urlString: String = ""
+    
     var body: some View {
         if let string = String(data: mediaData, encoding: .utf8) {
             switch(mediaType) {
@@ -42,7 +43,7 @@ struct APODImageView: View {
                 if let uiImage = UIImage(data: mediaData) {
                     return AnyView(Image(uiImage: uiImage)
                         .resizable()
-                        .aspectRatio(contentMode: .fit))
+                        .aspectRatio(contentMode: .fill))
                 } else {
                     return AnyView(Image("xmark.octagon.fill")
                         .resizable()
@@ -62,6 +63,13 @@ struct APODImageView: View {
         self.mediaData = mediaData
     }
 
+}
+
+//
+// MARK: -
+// MARK: APODImageView Utilities
+//
+extension APODImageView {
     ///
     /// Given a name, this function will return an image based upon that string.
     /// Optionally, the name can begin with ```system:``` in which case, the
@@ -79,12 +87,12 @@ struct APODImageView: View {
         }
         return newImage
     }
-    
-    func remoteImage(urlString: String) -> some View {
+
+    private func remoteImage(urlString: String) -> some View {
         if let image = loader.load(urlString) {
             return AnyView(Image(uiImage: image)
                 .resizable()
-                .aspectRatio(contentMode: .fill))
+                .aspectRatio(contentMode: .fit))
         } else {
             // We add this NavigationView because it takes up the entire
             // view bounds and thus can be centered properly. I'm sure there
@@ -121,10 +129,6 @@ struct APODImageView_Previews: PreviewProvider {
     static var previews: some View {
         APODImageView(mediaType: .imageURL,
                       mediaData: "https://www.loc.gov/static/home/images/featured/programs/2021concerts-mar_1200x560.jpg"
-                        .data(using: .utf8) ?? Data())
-
-        APODImageView(mediaType: .imageURL,
-                      mediaData: "bad"
                         .data(using: .utf8) ?? Data())
     }
 }

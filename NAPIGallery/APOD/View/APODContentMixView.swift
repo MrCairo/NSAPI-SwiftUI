@@ -33,13 +33,6 @@ struct APODContentMixView: View {
                 Spacer()
                 Text(data.explanation ?? "Description not provided.")
                     .padding()
-                //            APODTextView(text: data.explanation ?? "Missing Explanation")
-                //                .padding()
-                //                .scaledToFit()
-                ////                .frame(minWidth: 0,
-                ////                       maxWidth: .infinity,
-                ////                       minHeight: 200,
-                ////                       maxHeight: .infinity)
             }
         }
     }
@@ -53,10 +46,13 @@ struct APODContentMixView: View {
     }
 }
 
+#if DEBUG
 struct APODContentMixView_Previews: PreviewProvider {
     static var previews: some View {
-        APODContentMixView(data: APODDataModel.mockModel())
+        APODContentMixView(data: APODDataModel.mockImageModel)
+
+        APODContentMixView(data: APODDataModel.mockVideoModel)
     }
 }
-
+#endif
 

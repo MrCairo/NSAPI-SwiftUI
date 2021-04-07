@@ -10,14 +10,20 @@ import SwiftUI
 
 struct NAPIMenuCell: View, Identifiable {
     var id = UUID()
-    let info: NAPIMenuItem
+    var info: NAPIMenuItem
+    @State private var image: Image = Image(systemName: "xmark.octagon")
     
     var body: some View {
         HStack {
+            if let name = info.imageName {
+                Image(name)
+            }
             VStack(alignment: .leading) {
                 Text(info.title)
                     .fontWeight(.bold)
                     .font(.title)
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
                 Text(info.description)
                     .font(.headline)
             }
