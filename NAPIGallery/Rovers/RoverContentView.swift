@@ -23,21 +23,21 @@ struct RoverContentView: View {
 //
 
 private let menuItems = [
-    NAPIMenuItem(title: "Opportunity",
-                 description: "Mars Exploration Rover – B (Oppy)",
-                 imageName: "Rover_Opportunity_Small",
-                 targetType: .roverOpportunity),
     NAPIMenuItem(title: "Sprit",
                  description: "Mars Exploration Rover – A",
-                 imageName: "Rover_Spirit_Small",
+                 imageName: "Rover_Spirit_Icon",
                  targetType: .roverSpirit),
+    NAPIMenuItem(title: "Opportunity",
+                 description: "Mars Exploration Rover – B (Oppy)",
+                 imageName: "Rover_Opportunity_Icon",
+                 targetType: .roverOpportunity),
     NAPIMenuItem(title: "Curiosity",
                  description: "Mars Curiosity Rover",
-                 imageName: "Rover_Curiosity_Small",
+                 imageName: "Rover_Curiosity_Icon",
                  targetType: .roverCuriosity),
     NAPIMenuItem(title: "Perseverance",
                  description: "Mars Perseverance Rover",
-                 imageName: "Rover_Perseverance_Small",
+                 imageName: "Rover_Perseverance_Icon",
                  targetType: .roverPerseverance)
 ]
 
