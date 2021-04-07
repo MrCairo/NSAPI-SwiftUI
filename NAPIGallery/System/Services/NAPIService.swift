@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import OSLog
 
 enum NAPIServiceError: Error {
     case statusCode
@@ -82,5 +83,14 @@ extension URL {
         var components = URLComponents(url: self, resolvingAgainstBaseURL: true)
         components?.queryItems = queries //queries.compactMap({ URLQueryItem(name: $0.0, value: $0.1) })
         return components?.url
+    }
+}
+
+public class NAPILogger {
+    static private let shared = NAPILogger()
+    static private let log = Logger()
+
+    class func info(_ message: String) {
+        NAPILogger.log.info("\(message)")
     }
 }

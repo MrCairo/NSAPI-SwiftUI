@@ -8,32 +8,34 @@
 import SwiftUI
 
 struct RoverDetailView: View {
-    
-    let imageDataModel: RoverCameraImageData
-    @StateObject private var loader = ImageLoader2()
-    @State var showAI = true
+    let cameraImageDataModel: RoverCameraImageData
     
     var body: some View {
-        List(imageDataModel.cameraImageData) { item in
-            remoteImage(urlString: item.imageUrlString)
+        ScrollView {
+            RoverImageStackView(dataModel: cameraImageDataModel.imageData)
         }
     }
+}
 
-    private func remoteImage(urlString: String) -> some View {
-        if let image = loader.load(urlString) {
-            return AnyView(Image(uiImage: image)
-                .resizable()
-                .aspectRatio(contentMode: .fit))
-        } else {
-            // We add this NavigationView because it takes up the entire
-            // view bounds and thus can be centered properly. I'm sure there
-            // is a better way of doing it...
-            return AnyView(NAPIActivityIndicatorView(isShowing: $showAI) {
-                List {
-                    Text("")
+private struct RoverImageStackView: View {
+    let dataModel: [RoverImageDataModel]
+    
+    var body: some View {
+        LazyVStack {
+            ForEach(0..<dataModel.count, id: \.self) {
+                index in
+                VStack {
+                    RoverImageView(imageUrlString: dataModel[index].imageUrlString)
+                    Text("Earth Date: \(dataModel[index].earthDate) (Sol: \(dataModel[index].sol))")
+                    Text(" ")
                 }
             }
-            .aspectRatio(contentMode: .fit))
+        }
+        .onDisappear() {
+//            viewList.forEach { (key, value) in
+//                value.unload()
+//            }
+//            viewList = [:]
         }
     }
 }

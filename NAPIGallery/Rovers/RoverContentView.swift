@@ -49,37 +49,3 @@ struct RoverContentView_Previews: PreviewProvider {
     }
 }
 #endif
-
-
-/*
- Possible other navigation using icons instead.
- 
- //        VStack(alignment: .center) {
-//            Button("Opportunity", action: {
-//            })
-//            Image("Rover_Opportunity_Small")
-//            .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-//            .foregroundColor(.blue)
-//            HStack(alignment: .center, spacing: 10) {
-//                Spacer()
-//                Button("Spirit", action: {
-//                })
-//                Image("Rover_Opportunity_Small")
-//                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-//                .foregroundColor(.blue)
-//                Spacer()
-//                Button("Rover 2", action: {
-//                })
-//                Image("Rover_Opportunity_Small")
-//                .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-//                .foregroundColor(.blue)
-//                Spacer()
-//            }
-//            Button("Rover 3", action: {
-//            })
-//            Image("Rover_Opportunity_Small")
-//            .padding(EdgeInsets(top: 10, leading: 10, bottom: 10, trailing: 10))
-//            .foregroundColor(.blue)
-//        }
-
- */

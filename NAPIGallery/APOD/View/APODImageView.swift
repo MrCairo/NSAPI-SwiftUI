@@ -18,7 +18,7 @@ struct APODImageView: View {
     
     /// Observing changes in the ImageLoader.
     /// This would really be just the change in the Image object within the loader
-    @StateObject private var loader = ImageLoader.shared
+    @StateObject private var loader = NAPIImageLoader()
     @State private var showAI: Bool = true
     @State private var urlString: String = ""
     
@@ -89,7 +89,7 @@ extension APODImageView {
     }
 
     private func remoteImage(urlString: String) -> some View {
-        if let image = ImageLoader.shared.load(urlString) {
+        if let image = loader.load(urlString) {
             return AnyView(Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit))

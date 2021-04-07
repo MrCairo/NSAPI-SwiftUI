@@ -53,8 +53,8 @@ struct RoverMiniManifestModel: Codable, Identifiable {
     init() {
         id = -1
         name = ""
-        landingDate = NAPIDateSelectionView.displayDate(Date())
-        launchDate = NAPIDateSelectionView.displayDate(Date())
+        landingDate = NAPIDate.displayDate(Date())
+        launchDate = NAPIDate.displayDate(Date())
         status = "unknown"
     }
 }

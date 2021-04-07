@@ -16,9 +16,38 @@ public enum RoverType: String {
 }
 
 struct RoverCameraImageData: Identifiable {
-    let cameraName: String
-    let cameraImageData: [RoverImageDataModel]
+    let name: String
+    let description: String
+    let imageData: [RoverImageDataModel]
     let id = UUID()
+}
+
+struct RoverImageDates {
+    static func minDate(rover: RoverType) -> Date {
+        switch rover {
+        case .spirit:
+            return NAPIDate.dateFromDisplayDate("Jan 5, 2004")
+        case .opportunity:
+            return NAPIDate.dateFromDisplayDate("Jan 26, 2004")
+        case .curiosity:
+            return NAPIDate.dateFromDisplayDate("Aug 7, 2012")
+        case .perseverance:
+            return NAPIDate.dateFromDisplayDate("Jan 5, 2004")
+        }
+    }
+
+    static func maxDate(rover: RoverType) -> Date {
+        switch rover {
+        case .spirit:
+            return NAPIDate.dateFromDisplayDate("Mar 21, 2010")
+        case .opportunity:
+            return NAPIDate.dateFromDisplayDate("Jun 11, 2018")
+        case .curiosity:
+            return Date()
+        case .perseverance:
+            return Date()
+        }
+    }
 }
 
 final class RoverContentViewModel: NAPIService, Identifiable, ObservableObject {
@@ -32,6 +61,11 @@ final class RoverContentViewModel: NAPIService, Identifiable, ObservableObject {
     
     public func update(roverType type: RoverType) {
         roverType = type
+    }
+    
+    public func reset() {
+        self.aggregate = [RoverCameraImageData]()
+        self.model = RoverPhotosModel()
     }
     
     func fetch(queryParms: [URLQueryItem] = []) -> Bool {
@@ -71,25 +105,31 @@ final class RoverContentViewModel: NAPIService, Identifiable, ObservableObject {
     
     func aggregateModel() {
         var cameraName: String = ""
+        var cameraDescription = ""
         let mainArray = model.latestPhotos ?? model.photos
         var imageDataArray = [RoverImageDataModel]()
         aggregate.removeAll()
         
-        cameraName = mainArray?.first?.camera.fullName ?? ""
+        cameraName = mainArray?.first?.camera.name ?? ""
+        cameraDescription = mainArray?.first?.camera.fullName ?? ""
         mainArray?.forEach({ (imageModel) in
-            if cameraName != imageModel.camera.fullName {
+            if cameraDescription != imageModel.camera.fullName {
                 if imageDataArray.count > 0 {
-                    aggregate.append(RoverCameraImageData(cameraName: cameraName,
-                                                          cameraImageData: imageDataArray))
+                    aggregate.append(RoverCameraImageData(name: cameraName,
+                                                          description: cameraDescription,
+                                                          imageData: imageDataArray))
                 }
                 imageDataArray = [RoverImageDataModel]()
-                cameraName = imageModel.camera.fullName
+                cameraName = imageModel.camera.name
+                cameraDescription = imageModel.camera.fullName
             }
             imageDataArray.append(imageModel)
         })
+
         if imageDataArray.count > 0 {
-            aggregate.append(RoverCameraImageData(cameraName: cameraName,
-                                                  cameraImageData: imageDataArray))
+            aggregate.append(RoverCameraImageData(name: cameraName,
+                                                  description: cameraDescription,
+                                                  imageData: imageDataArray))
         }
     }
 

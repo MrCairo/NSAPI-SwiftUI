@@ -9,8 +9,8 @@ import SwiftUI
 import Combine
 
 struct APODContentView: View {
-    @State private var showingPopover = false
-    @StateObject var date = SelectedDate(startDate: Date())
+    @State private var showingDatePicker = false
+    @StateObject var date = NAPISelectedDate(startDate: Date())
     @State private var apodData = APODDataModel()
     @StateObject private var viewModel = APODContentViewModel()
     
@@ -42,13 +42,15 @@ struct APODContentView: View {
             .onAppear(perform: {
                 callService()
             })
-            .sheet(isPresented: $showingPopover, onDismiss: {
+            .sheet(isPresented: $showingDatePicker, onDismiss: {
                 callService()
             }) {
-                NAPIDateSelectionView(viewPresented: $showingPopover, selectedDate: $date.startDate)
+                NAPIDateSelectionView(viewPresented: $showingDatePicker,
+                                      selectedDate: $date.startDate,
+                                      dateBounds: NAPIDate.dateFromDisplayDate("Jul 16, 1995")...Date())
             }
         }
-        .navigationBarItems(trailing: Button(action: { showingPopover = true},
+        .navigationBarItems(trailing: Button(action: { showingDatePicker = true},
                                             label: {
                                                 Label("Select Date", systemImage: "calendar")
                                                     .labelStyle(IconOnlyLabelStyle())

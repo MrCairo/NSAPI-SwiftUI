@@ -1,5 +1,5 @@
 //
-//  TextFieldAlertView.swift
+//  NAPITextFieldAlertViewController.swift
 //  NAPIGallery
 //
 //  Created by Mitch Fisher on 3/27/21.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-class TextFieldAlertViewController: UIViewController {
+class NAPITextFieldAlertViewController: UIViewController {
     
     /// Presents a UIAlertController (alert style) with a UITextField and a `Done` button
     /// - Parameters:
@@ -84,10 +84,10 @@ struct TextFieldAlert {
 
 extension TextFieldAlert: UIViewControllerRepresentable {
     
-    typealias UIViewControllerType = TextFieldAlertViewController
+    typealias UIViewControllerType = NAPITextFieldAlertViewController
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<TextFieldAlert>) -> UIViewControllerType {
-        TextFieldAlertViewController(title: title, message: message, text: $text, isPresented: isPresented)
+        NAPITextFieldAlertViewController(title: title, message: message, text: $text, isPresented: isPresented)
     }
     
     func updateUIViewController(_ uiViewController: UIViewControllerType,

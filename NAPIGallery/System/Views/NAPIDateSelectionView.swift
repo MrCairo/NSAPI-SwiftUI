@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class SelectedDate: ObservableObject {
+class NAPISelectedDate: ObservableObject {
     @Published var startDate: Date = Date.distantPast
     @Published var endDate: Date = Date.distantFuture
     
@@ -15,67 +15,109 @@ class SelectedDate: ObservableObject {
         self.startDate = startDate
         self.endDate = endDate
     }
+    
+    func startDateIsToday() -> Bool {
+        return NAPIDate.displayDate(startDate) == NAPIDate.displayDate(Date())
+    }
 }
 
 struct NAPIDateSelectionView: View {
     @Binding var viewPresented: Bool
     @Binding var selectedDate: Date
-    @State private var pickerDate = SelectedDate(startDate: Date())
-    
-    private let dateRange: ClosedRange<Date> = {
-        let calendar = Calendar.current
-        let defStart = Date(timeIntervalSince1970: TimeInterval(805872747))
-        let startComponents = DateComponents(year: 1995, month: 7, day: 16)
-        let endComponents = calendar.dateComponents([.year, .month, .day], from: Date())
-        return (calendar.date(from:startComponents) ?? defStart)
-            ...
-            (calendar.date(from:endComponents) ?? Date())
-    }()
+    public var dateBounds: ClosedRange<Date>
+    @State private var pickerDate = NAPISelectedDate(startDate: Date.distantPast)
     
     private var dateProxy: Binding<Date> {
-        Binding<Date>(get: { self.pickerDate.startDate }, set: {
-            self.pickerDate = SelectedDate(startDate: $0)
+        Binding<Date>(get: {
+            if self.pickerDate.startDate == Date.distantPast {
+                self.pickerDate.startDate = selectedDate
+            }
+            return self.pickerDate.startDate
+            
+        }, set: {
+            self.pickerDate = NAPISelectedDate(startDate: $0)
         })
     }
 
     var body: some View {
         VStack {
-            Text("Select Date: \(NAPIDateSelectionView.displayDate(pickerDate.startDate))")
-                .font(.title)
+            Text("Selected Date: \(NAPIDate.displayDate((pickerDate.startDate == Date.distantPast) ? selectedDate : pickerDate.startDate))")
+                .font(.title2)
             Spacer()
             Form {
                 DatePicker(
                     "Start Date:",
                     selection: dateProxy,
-                    in: dateRange,
+                    in: dateBounds,
                     displayedComponents: [.date]
                 )
+                .datePickerStyle(GraphicalDatePickerStyle())
                 HStack {
                     Button("Cancel") {
                         viewPresented = false
                     }
                     .foregroundColor(.red)
+                    .buttonStyle(BorderlessButtonStyle())
+                    .padding()
+                    Spacer()
+                    Button("Today") {
+                        self.pickerDate.startDate = Date()
+                        selectedDate = Date()
+                    }
+                    .padding()
+                    .buttonStyle(BorderlessButtonStyle())
                     Spacer()
                     Button("Done") {
                         viewPresented = false
                         selectedDate = self.pickerDate.startDate
                     }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .padding()
                 }
             }
         }
     }
+}
+
+struct NAPIDate {
+    let date: Date
     
+    init(_ date: Date) {
+        self.date = date
+    }
+
     static func displayDate(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd,yyyy"
         return dateFormatter.string(from: date)
+    }
+    
+    static func dateFromDisplayDate(_ dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd,yyyy"
+        return dateFormatter.date(from: dateString) ?? Date(timeIntervalSince1970: 0)
+    }
+    
+    static func iso8601DisplayDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        return dateFormatter.string(from: date)
+    }
+    
+    static func dateFromIso8601DisplayDate(_ dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        return dateFormatter.date(from: dateString) ?? Date(timeIntervalSince1970: 0)
     }
 }
 
 #if DEBUG
 struct NAPIDateSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        NAPIDateSelectionView(viewPresented: .constant(true), selectedDate: .constant(Date()))
+
+        NAPIDateSelectionView(viewPresented: .constant(true),
+                              selectedDate: .constant(Date()),
+                              dateBounds: NAPIDate.dateFromDisplayDate("Jul 16, 1995")...Date())
     }
 }
 #endif
