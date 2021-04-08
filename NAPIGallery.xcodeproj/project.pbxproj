@@ -132,6 +132,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C0D8FC7261E1C5300DB2489 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4C52DFCE2610029C005BF9EA /* NAPIKey.swift */,
+				4C15E0EC25F46A8E00F9F12D /* NAPIMenuModel.swift */,
+				4C7FDF472619575B000C8D9C /* Bundle+JSONDecoder.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4C12C52526166F8F008E2AA5 /* Rovers */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,15 +258,13 @@
 		4C2ECCBF26189EFE0004B5C6 /* System */ = {
 			isa = PBXGroup;
 			children = (
+				4C0D8FC7261E1C5300DB2489 /* Models */,
 				4C52DFBA260FAAF7005BF9EA /* Services */,
 				4CEE180926096EF100C34213 /* Views */,
-				4C52DFCE2610029C005BF9EA /* NAPIKey.swift */,
 				4C15E0E725F46A2100F9F12D /* NAPIMainContentView.swift */,
 				4C15E0FE25F500F800F9F12D /* NAPIAboutContentView.swift */,
-				4C15E0EC25F46A8E00F9F12D /* NAPIMenuModel.swift */,
 				4C15E0F125F46B2000F9F12D /* NAPIMenuNavigationLink.swift */,
 				4C15E0F625F46B5400F9F12D /* NAPIMenuCell.swift */,
-				4C7FDF472619575B000C8D9C /* Bundle+JSONDecoder.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -625,7 +633,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"NAPIGallery/Preview Content\"";
 				DEVELOPMENT_TEAM = SJD3J9CYQ8;
 				ENABLE_PREVIEWS = YES;
@@ -637,6 +647,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.committed-code.napi-gallery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -647,7 +658,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"NAPIGallery/Preview Content\"";
 				DEVELOPMENT_TEAM = SJD3J9CYQ8;
 				ENABLE_PREVIEWS = YES;
@@ -659,6 +672,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.committed-code.napi-gallery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
