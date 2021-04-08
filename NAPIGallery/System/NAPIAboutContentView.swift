@@ -57,7 +57,9 @@ struct NAPIAboutContentView: View {
     
     var infoWithLink: some View {
             ((Text("Please visit ")
-                + Text("https://api.nasa.gov ").foregroundColor(.yellow))
+                + Text("https://api.nasa.gov ")
+                    .foregroundColor(.yellow)
+                    .underline(color: .white))
                 + Text("to generate a free API Key which will allow for more data requests per hour"))
     }
 }
