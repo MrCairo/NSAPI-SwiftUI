@@ -32,7 +32,7 @@ struct NAPIAboutContentView: View {
                 .foregroundColor(.white)
                 .padding(.top, 50)
             Spacer()
-            Text("This app will allow you to view the various images and other data. The information is readily available from the NASA API but this app makes it easy to retrieve and visualize the inrormation!")
+            Text("This app will allow you to view the various images and other data. The information is publicly available from the NASA API but this app makes it easy to retrieve and visualize the information!")
                 .font(.title2)
                 .multilineTextAlignment(.leading)
                 .padding()
