@@ -30,7 +30,7 @@ final class APODContentViewModel: NAPIService, Identifiable, ObservableObject {
     }
 
     var url: URL? {
-        return URL(string: apodData.url ?? "")
+        return URL(string: apodData.hdurl ?? apodData.url ?? "")
     }
     
     var hdurl: URL? {

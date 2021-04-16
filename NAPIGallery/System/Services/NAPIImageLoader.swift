@@ -110,9 +110,8 @@ class NAPIImageLoader: ObservableObject {
             .map { UIImage(data: $0.data) }
             .receive(on: DispatchQueue.main)
             .replaceError(with: nil)
-            .sink(receiveCompletion: { (completion) in
-                print(completion)
-            }, receiveValue: { [weak self] in
+            .sink(receiveCompletion: { (_) in },
+                  receiveValue: { [weak self] in
                 if let img = $0 ?? self?.errorImage {
                     ImageCache.shared.store(cachedImage: CachedImage(image: img),
                                             identifiedBy: urlString)

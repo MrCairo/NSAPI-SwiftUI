@@ -40,6 +40,7 @@
 		4C9390DB25FD95D8001710C2 /* APODTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9390DA25FD95D8001710C2 /* APODTextView.swift */; };
 		4C9DEB7A2600CA8300B14894 /* APODContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DEB792600CA8300B14894 /* APODContentViewModel.swift */; };
 		4CAD4B0A25F9AB620057BB5E /* APODContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD4B0925F9AB620057BB5E /* APODContentView.swift */; };
+		4CBB8D8426279575001DEC94 /* NAPIDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB8D8326279575001DEC94 /* NAPIDate.swift */; };
 		4CD6DF40261A4B9A0009FB51 /* RoverCameraListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DF3F261A4B9A0009FB51 /* RoverCameraListView.swift */; };
 		4CD6DF4D261CA5420009FB51 /* RoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DF4C261CA5420009FB51 /* RoverImageView.swift */; };
 		4CEE180B26096F0C00C34213 /* NAPIDateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEE180A26096F0C00C34213 /* NAPIDateSelectionView.swift */; };
@@ -102,6 +103,7 @@
 		4C9390DA25FD95D8001710C2 /* APODTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODTextView.swift; sourceTree = "<group>"; };
 		4C9DEB792600CA8300B14894 /* APODContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODContentViewModel.swift; sourceTree = "<group>"; };
 		4CAD4B0925F9AB620057BB5E /* APODContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODContentView.swift; sourceTree = "<group>"; };
+		4CBB8D8326279575001DEC94 /* NAPIDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIDate.swift; sourceTree = "<group>"; };
 		4CD6DF3F261A4B9A0009FB51 /* RoverCameraListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverCameraListView.swift; sourceTree = "<group>"; };
 		4CD6DF4C261CA5420009FB51 /* RoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImageView.swift; sourceTree = "<group>"; };
 		4CEE180A26096F0C00C34213 /* NAPIDateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIDateSelectionView.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				4C52DFCE2610029C005BF9EA /* NAPIKey.swift */,
 				4C15E0EC25F46A8E00F9F12D /* NAPIMenuModel.swift */,
 				4C7FDF472619575B000C8D9C /* Bundle+JSONDecoder.swift */,
+				4CBB8D8326279575001DEC94 /* NAPIDate.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -469,6 +472,7 @@
 				4C52DFBC260FAB0D005BF9EA /* NAPIImageLoader.swift in Sources */,
 				4C52DFB6260FA684005BF9EA /* APODContentMixView.swift in Sources */,
 				4CD6DF4D261CA5420009FB51 /* RoverImageView.swift in Sources */,
+				4CBB8D8426279575001DEC94 /* NAPIDate.swift in Sources */,
 				4C2ECCA12617F9730004B5C6 /* RoverImageModel.swift in Sources */,
 				4C15E10525F52D9A00F9F12D /* NAPIService.swift in Sources */,
 				4C15E10D25F532C500F9F12D /* APODDataModel.swift in Sources */,
@@ -635,7 +639,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"NAPIGallery/Preview Content\"";
 				DEVELOPMENT_TEAM = SJD3J9CYQ8;
 				ENABLE_PREVIEWS = YES;
@@ -645,7 +649,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.committed-code.napi-gallery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -661,7 +665,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"NAPIGallery/Preview Content\"";
 				DEVELOPMENT_TEAM = SJD3J9CYQ8;
 				ENABLE_PREVIEWS = YES;
@@ -671,7 +675,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.7;
+				MARKETING_VERSION = 1.0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.committed-code.napi-gallery";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

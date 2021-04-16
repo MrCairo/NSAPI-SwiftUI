@@ -7,10 +7,20 @@
 
 import SwiftUI
 
+///
+/// Manages a NASA API Key. This object is implemented as a singleton via the ```shared```
+/// attribute.
+///
 class NAPIKey: ObservableObject {
     static let demoKey = "DEMO_KEY"
     static let shared = NAPIKey()
 
+    ///
+    /// Returns the currently stored key.
+    /// Setting this value will store it on-device. Only the first 80
+    /// characters of ```newValue``` will be stored. This is normally
+    /// fine since the current standard API Key is only 40 characters long.
+    ///
     public var value: String {
         get { return key }
         set { key = newValue }
@@ -49,19 +59,20 @@ class NAPIKey: ObservableObject {
         
         //
         // It is possible to write anything including DEMO_KEY.
-        // The string to be saved cannot be longer than 255 characters.
-        // I like values that are a power of 2.
+        // The string to be saved cannot be longer than 80 characters.
+        // This assumption here is that even if the NASA API KEY was to
+        // double in size, this code will still continue to work and at
+        // the same time prevent a large string from being written to
+        // the device.
         //
-        if key.lengthOfBytes(using: .utf8) < 256 {
-            do {
-                try key.write(toFile: file.path, atomically: true, encoding: .utf8)
-                return true
-            } catch {
-                return false
-            }
+        let len = key.lengthOfBytes(using: .utf8)
+        let cleanKey = (len > 80) ? String(key.prefix(upTo: key.index(key.startIndex, offsetBy: 80))) : key
+        do {
+            try cleanKey.write(toFile: file.path, atomically: true, encoding: .utf8)
+            return true
+        } catch {
+            return false
         }
-
-        return false
     }
 
     private init() {
@@ -71,23 +82,3 @@ class NAPIKey: ObservableObject {
         value = key
     }
 }
-
-@propertyWrapper
-struct Atomic<Value> {
-    private let queue = DispatchQueue(label: "com.vadimbulavin.atomic")
-    private var value: Value
-
-    init(wrappedValue: Value) {
-        self.value = wrappedValue
-    }
-
-    var wrappedValue: Value {
-        get {
-            return queue.sync { value }
-        }
-        set {
-            queue.sync { value = newValue }
-        }
-    }
-}
-

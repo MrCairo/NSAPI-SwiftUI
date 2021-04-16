@@ -21,16 +21,20 @@ struct NAPIMainContentView: View {
     ]
     
     var body: some View {
-        NavigationView {
-            if alertPresenting {
-                NAPIKeyAlertView(isPresenting: $alertPresenting)
-            } else {
-                List(menuItems) { item in
-                    NAPIMenuNavigationLink(menuItem: item)
+        GeometryReader { geometry in
+            ZStack {
+                NavigationView {
+                    if alertPresenting {
+                        NAPIKeyAlertView(isPresenting: $alertPresenting)
+                    } else {
+                        List(menuItems) { item in
+                            NAPIMenuNavigationLink(menuItem: item)
+                        }
+                        .navigationTitle("NASA API Gallery")
+                        .listStyle(GroupedListStyle())
+                        .navigationBarTitleDisplayMode(.inline)
+                    }
                 }
-                .navigationTitle("NASA API Gallery")
-                .listStyle(GroupedListStyle())
-                .navigationBarTitleDisplayMode(.inline)
             }
         }
     }

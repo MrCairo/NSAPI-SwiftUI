@@ -23,18 +23,16 @@ class NAPIKeyPromptViewController: UIViewController {
         self.message = message
         self.isPresented = isPresented
         super.init(nibName: nil, bundle: nil)
-//        self.apiKeyString = NAPIKey.shared.value
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - Dependencies
     private let alertTitle: String
     private let message: String?
 
-//    @Binding private var text: String?
     private var isPresented: Binding<Bool>?
     
     // MARK: - Private Properties

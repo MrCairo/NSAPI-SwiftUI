@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "NASA_Mars_Rover_Curiosity_Small@1x.jpg",
+      "filename" : "Mars_Rover_Curiosity_Small_Rounded@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "NASA_Mars_Rover_Curiosity_Small@2x.jpg",
+      "filename" : "Mars_Rover_Curiosity_Small_Rounded@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "NASA_Mars_Rover_Curiosity_Small@3x.jpg",
+      "filename" : "Mars_Rover_Curiosity_Small_Rounded@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
