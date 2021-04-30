@@ -22,7 +22,6 @@ enum NAPIServiceError: Error {
 }
 
 public class NAPIService {
-    static let apiKey = "uRzLWNLN9bEasIUbGkorbGaeJMCLiWAIAVPvV5Bz"
     static let baseURL = URL(string: "https://api.nasa.gov/")!
     
     enum Error: LocalizedError, Identifiable {
@@ -57,7 +56,7 @@ public class NAPIService {
         // Sorta clean the parms by removing an existing "api_key" value and
         // then adding in the one with the correct value.
         var cleaned = parms.filter({ (item) -> Bool in return item.name != "api_key" })
-        cleaned.append(URLQueryItem(name: "api_key", value: apiKey))
+        cleaned.append(URLQueryItem(name: "api_key", value: NAPIKey.shared.value))
 
         guard let url = baseURL
                 .appendingPathComponent(endpoint)
