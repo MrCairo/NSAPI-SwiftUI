@@ -44,18 +44,9 @@ struct RoverCameraListView: View {
     
     var navButtons: some View {
         HStack {
-            Button(action: { showingDatePicker = true; showingRoverInfo = false },
+            Button(action: { showingDatePicker = true },
                    label: {
                     Label("Select Date", systemImage: "calendar")
-                        .labelStyle(IconOnlyLabelStyle())
-                   })
-                .sheet(isPresented: $showingRoverInfo, content: {
-//                    RoverInfoView()
-                })
-            
-            Button(action: { showingRoverInfo = true; showingDatePicker = false },
-                   label: {
-                    Label("Rover Info", systemImage: "info.circle")
                         .labelStyle(IconOnlyLabelStyle())
                    })
                 .sheet(isPresented: $showingDatePicker, onDismiss: { viewModel.reset() },
@@ -66,9 +57,22 @@ struct RoverCameraListView: View {
                                                 ...
                                                 RoverImageDates.maxDate(rover: rover))
                        })
+
+//            infoButton
         }
     }
     
+    var infoButton: some View {
+        Button(action: { showingRoverInfo = true; showingDatePicker = false },
+               label: {
+                Label("Rover Info", systemImage: "info.circle")
+                    .labelStyle(IconOnlyLabelStyle())
+               })
+            .sheet(isPresented: $showingRoverInfo, content: {
+//                    RoverInfoView()
+            })
+    }
+
     private func callService(usingDate: Date?) {
         var query = [URLQueryItem]()
         if let date = usingDate {
