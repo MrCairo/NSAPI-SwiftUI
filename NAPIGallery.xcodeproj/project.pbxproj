@@ -41,6 +41,9 @@
 		4C9DEB7A2600CA8300B14894 /* APODContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DEB792600CA8300B14894 /* APODContentViewModel.swift */; };
 		4CAD4B0A25F9AB620057BB5E /* APODContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAD4B0925F9AB620057BB5E /* APODContentView.swift */; };
 		4CBB8D8426279575001DEC94 /* NAPIDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB8D8326279575001DEC94 /* NAPIDate.swift */; };
+		4CBB8D972629C14E001DEC94 /* RoverInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB8D962629C14E001DEC94 /* RoverInfoView.swift */; };
+		4CBB8DA0262A565C001DEC94 /* RoverInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB8D9F262A565C001DEC94 /* RoverInfoService.swift */; };
+		4CBB8DA5262A56AE001DEC94 /* RoverInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBB8DA4262A56AE001DEC94 /* RoverInfoModel.swift */; };
 		4CD6DF40261A4B9A0009FB51 /* RoverCameraListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DF3F261A4B9A0009FB51 /* RoverCameraListView.swift */; };
 		4CD6DF4D261CA5420009FB51 /* RoverImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD6DF4C261CA5420009FB51 /* RoverImageView.swift */; };
 		4CEE180B26096F0C00C34213 /* NAPIDateSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CEE180A26096F0C00C34213 /* NAPIDateSelectionView.swift */; };
@@ -104,6 +107,10 @@
 		4C9DEB792600CA8300B14894 /* APODContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODContentViewModel.swift; sourceTree = "<group>"; };
 		4CAD4B0925F9AB620057BB5E /* APODContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODContentView.swift; sourceTree = "<group>"; };
 		4CBB8D8326279575001DEC94 /* NAPIDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIDate.swift; sourceTree = "<group>"; };
+		4CBB8D91262919B6001DEC94 /* NAPIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NAPIImage.swift; path = NAPIGallery/System/Views/NAPIImage.swift; sourceTree = SOURCE_ROOT; };
+		4CBB8D962629C14E001DEC94 /* RoverInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverInfoView.swift; sourceTree = "<group>"; };
+		4CBB8D9F262A565C001DEC94 /* RoverInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverInfoService.swift; sourceTree = "<group>"; };
+		4CBB8DA4262A56AE001DEC94 /* RoverInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverInfoModel.swift; sourceTree = "<group>"; };
 		4CD6DF3F261A4B9A0009FB51 /* RoverCameraListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverCameraListView.swift; sourceTree = "<group>"; };
 		4CD6DF4C261CA5420009FB51 /* RoverImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverImageView.swift; sourceTree = "<group>"; };
 		4CEE180A26096F0C00C34213 /* NAPIDateSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIDateSelectionView.swift; sourceTree = "<group>"; };
@@ -141,6 +148,7 @@
 				4C15E0EC25F46A8E00F9F12D /* NAPIMenuModel.swift */,
 				4C7FDF472619575B000C8D9C /* Bundle+JSONDecoder.swift */,
 				4CBB8D8326279575001DEC94 /* NAPIDate.swift */,
+				4CBB8D91262919B6001DEC94 /* NAPIImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,6 +156,7 @@
 		4C12C52526166F8F008E2AA5 /* Rovers */ = {
 			isa = PBXGroup;
 			children = (
+				4CBB8D9E262A55E2001DEC94 /* Services */,
 				4C12C52926169BF0008E2AA5 /* Model */,
 				4C12C52A26169BF8008E2AA5 /* View */,
 				4C12C52B26169BFF008E2AA5 /* ViewModel */,
@@ -160,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				4C2ECCA02617F9730004B5C6 /* RoverImageModel.swift */,
+				4CBB8DA4262A56AE001DEC94 /* RoverInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,6 +181,7 @@
 				4CD6DF4C261CA5420009FB51 /* RoverImageView.swift */,
 				4CD6DF3F261A4B9A0009FB51 /* RoverCameraListView.swift */,
 				4C2ECCB726189C9A0004B5C6 /* RoverMenuNavigationLink.swift */,
+				4CBB8D962629C14E001DEC94 /* RoverInfoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,6 +317,14 @@
 				4C9DEB792600CA8300B14894 /* APODContentViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4CBB8D9E262A55E2001DEC94 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4CBB8D9F262A565C001DEC94 /* RoverInfoService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		4CEE180926096EF100C34213 /* Views */ = {
@@ -464,6 +483,7 @@
 				4CEE180B26096F0C00C34213 /* NAPIDateSelectionView.swift in Sources */,
 				4C15E0F725F46B5400F9F12D /* NAPIMenuCell.swift in Sources */,
 				4C15E0F225F46B2000F9F12D /* NAPIMenuNavigationLink.swift in Sources */,
+				4CBB8DA0262A565C001DEC94 /* RoverInfoService.swift in Sources */,
 				4C2ECCAE26188BE90004B5C6 /* RoverContentViewModel.swift in Sources */,
 				4C9390D625FD95CD001710C2 /* APODVideoView.swift in Sources */,
 				4C52DFEB26149EDC005BF9EA /* NAPIActivityIndicatorView.swift in Sources */,
@@ -472,9 +492,11 @@
 				4C52DFBC260FAB0D005BF9EA /* NAPIImageLoader.swift in Sources */,
 				4C52DFB6260FA684005BF9EA /* APODContentMixView.swift in Sources */,
 				4CD6DF4D261CA5420009FB51 /* RoverImageView.swift in Sources */,
+				4CBB8D972629C14E001DEC94 /* RoverInfoView.swift in Sources */,
 				4CBB8D8426279575001DEC94 /* NAPIDate.swift in Sources */,
 				4C2ECCA12617F9730004B5C6 /* RoverImageModel.swift in Sources */,
 				4C15E10525F52D9A00F9F12D /* NAPIService.swift in Sources */,
+				4CBB8DA5262A56AE001DEC94 /* RoverInfoModel.swift in Sources */,
 				4C15E10D25F532C500F9F12D /* APODDataModel.swift in Sources */,
 				4C52DFD4261118AA005BF9EA /* NAPIKeyPromptView.swift in Sources */,
 				4C2ECCB826189C9A0004B5C6 /* RoverMenuNavigationLink.swift in Sources */,

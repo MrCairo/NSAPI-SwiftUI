@@ -92,7 +92,8 @@ extension APODImageView {
         if let image = loader.load(urlString) {
             return AnyView(Image(uiImage: image)
                 .resizable()
-                .aspectRatio(contentMode: .fit))
+                .aspectRatio(contentMode: .fit)
+            )
         } else {
             // We add this NavigationView because it takes up the entire
             // view bounds and thus can be centered properly. I'm sure there

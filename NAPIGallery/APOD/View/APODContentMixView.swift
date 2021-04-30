@@ -22,16 +22,14 @@ struct APODContentMixView: View {
                     APODImageView(mediaType: (data.mediaURL() != nil) ? .imageURL : .imageData,
                                   mediaData: data.mediaURL()?.absoluteString.data(using: .utf8) ?? Data())
                         .scaleEffect((self.horizontalSizeClass ?? .compact) == .compact ? 1.0 : 0.75)
-                        .onTapGesture {
-                            showingPopover = true
-                        }
                 } else {
                     APODVideoView(mediaType: .video,
                                   mediaData: data.mediaURL()?.absoluteString.data(using: .utf8) ?? Data())
                         .scaleEffect((self.horizontalSizeClass ?? .compact) == .compact ? 1.0 : 0.75)
                 }
-                Spacer()
+                Spacer(minLength: 15)
                 Text(data.explanation ?? "Description not provided.")
+                    .font(.body)
                     .padding()
             }
         }
