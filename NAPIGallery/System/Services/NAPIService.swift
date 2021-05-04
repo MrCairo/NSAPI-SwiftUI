@@ -22,7 +22,6 @@ enum NAPIServiceError: Error {
 }
 
 public class NAPIService {
-    static let apiKey = "uRzLWNLN9bEasIUbGkorbGaeJMCLiWAIAVPvV5Bz"
     static let baseURL = URL(string: "https://api.nasa.gov/")!
     
     enum Error: LocalizedError, Identifiable {
