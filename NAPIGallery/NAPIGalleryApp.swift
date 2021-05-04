@@ -20,3 +20,4 @@ struct NAPIGalleryApp: App {
         }
     }
 }
+

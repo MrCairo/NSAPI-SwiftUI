@@ -30,6 +30,7 @@
 		4C52DFCF2610029C005BF9EA /* NAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFCE2610029C005BF9EA /* NAPIKey.swift */; };
 		4C52DFD4261118AA005BF9EA /* NAPIKeyPromptView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFD3261118AA005BF9EA /* NAPIKeyPromptView.swift */; };
 		4C52DFEB26149EDC005BF9EA /* NAPIActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C52DFEA26149EDC005BF9EA /* NAPIActivityIndicatorView.swift */; };
+		4C7F4BBB264196560079677A /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C7F4BBA264196560079677A /* Launch Screen.storyboard */; };
 		4C7FDF282618CE32000C8D9C /* RoverModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C7FDF272618CE32000C8D9C /* RoverModelTests.swift */; };
 		4C7FDF2D26193D44000C8D9C /* RoverModelLatestPhoto.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C7FDF2C26193D44000C8D9C /* RoverModelLatestPhoto.json */; };
 		4C7FDF3526194552000C8D9C /* RoverImageDataModel.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C7FDF3426194552000C8D9C /* RoverImageDataModel.json */; };
@@ -95,6 +96,7 @@
 		4C52DFCE2610029C005BF9EA /* NAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIKey.swift; sourceTree = "<group>"; };
 		4C52DFD3261118AA005BF9EA /* NAPIKeyPromptView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIKeyPromptView.swift; sourceTree = "<group>"; };
 		4C52DFEA26149EDC005BF9EA /* NAPIActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NAPIActivityIndicatorView.swift; sourceTree = "<group>"; };
+		4C7F4BBA264196560079677A /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4C7FDF272618CE32000C8D9C /* RoverModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverModelTests.swift; sourceTree = "<group>"; };
 		4C7FDF2C26193D44000C8D9C /* RoverModelLatestPhoto.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RoverModelLatestPhoto.json; sourceTree = "<group>"; };
 		4C7FDF3426194552000C8D9C /* RoverImageDataModel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RoverImageDataModel.json; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 				4C15E0B325F448E900F9F12D /* NAPIGalleryApp.swift */,
 				4C15E0B725F448EA00F9F12D /* Assets.xcassets */,
 				4C15E0BC25F448EA00F9F12D /* Info.plist */,
+				4C7F4BBA264196560079677A /* Launch Screen.storyboard */,
 				4C15E0B925F448EA00F9F12D /* Preview Content */,
 			);
 			path = NAPIGallery;
@@ -440,6 +443,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C7F4BBB264196560079677A /* Launch Screen.storyboard in Resources */,
 				4C15E0BB25F448EA00F9F12D /* Preview Assets.xcassets in Resources */,
 				4C15E0B825F448EA00F9F12D /* Assets.xcassets in Resources */,
 			);
