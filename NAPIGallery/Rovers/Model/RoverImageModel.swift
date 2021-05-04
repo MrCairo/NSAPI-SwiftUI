@@ -12,9 +12,9 @@ import Foundation
 /// There are multiple cameras per rover
 ///
 struct RoverCameraModel: Codable, Identifiable {
-    let id: Int
+    let id: Int?
     let name: String
-    let roverId: Int
+    let roverId: Int?
     let fullName: String
     
     enum CodingKeys: String, CodingKey {

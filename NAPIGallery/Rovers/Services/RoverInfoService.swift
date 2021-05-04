@@ -1,56 +1,55 @@
 //
-//  APODContentViewModel.swift
+//  RoverInfoService.swift
 //  NAPIGallery
 //
-//  Created by Mitch Fisher on 3/16/21.
+//  Created by Mitch Fisher on 4/16/21.
 //
+
 import Foundation
 import Combine
-import UIKit
 
-fileprivate let imageExt = ["jpg", "jpeg", "png", "gif"]
-
-final class APODContentViewModel: NAPIService, Identifiable, ObservableObject {
-    @Published private(set) var apodData = APODDataModel()
+final class RoverInformationService: NAPIService, Identifiable, ObservableObject {
+    @Published private(set) var roverInfo = RoverInformationModel()
 
     private var lastFetch = Date()
     private var urlRequest = URLRequest(url: URL(fileURLWithPath: "."))
     private var cancellables = Set<AnyCancellable>()
     
-    var title: String {
-        return apodData.title
+    
+    var name: String {
+        return roverInfo.name
     }
     
-    var description: String {
-        return apodData.explanation ?? ""
-    }
-
-    var explanation: String {
-        return self.description
-    }
-
-    var url: URL? {
-        return URL(string: apodData.hdurl ?? apodData.url ?? "")
+    var lanndingDate: String {
+        return roverInfo.landing_date ?? ""
     }
     
-    var hdurl: URL? {
-        return URL(string: apodData.hdurl ?? "")
-    }
-
-    var copyright: String? {
-        return apodData.copyright
-    }
-
-    func isImage() -> Bool {
-        return apodData.isImage()
-    }
-
-    func isVideo() -> Bool {
-        return false
+    var launchDate: String {
+        return roverInfo.launch_date ?? ""
     }
     
+    var status: String {
+        return roverInfo.status ?? "unknown"
+    }
+    
+    var maxSol: Int {
+        return roverInfo.max_sol ?? -1
+    }
+    
+    var maxDate: String {
+        return roverInfo.max_date ?? ""
+    }
+    
+    var totalPhotos: Int {
+        return roverInfo.total_photos ?? -1
+    }
+    
+    var cameras: [RoverCameraModel] {
+        return roverInfo.cameras
+    }
+
     func reset() {
-        apodData = APODDataModel()
+        roverInfo = RoverInformationModel()
     }
     
     func fetch(queryParms: [URLQueryItem] = []) {

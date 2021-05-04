@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Mars_Rover_Opportunity_Small_Rounded@1x.png",
+      "filename" : "Planet_Z_Launch.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Mars_Rover_Opportunity_Small_Rounded@2x.png",
+      "filename" : "Planet_Z_Launch@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Mars_Rover_Opportunity_Small_Rounded@3x.png",
+      "filename" : "Planet_Z_Launch@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

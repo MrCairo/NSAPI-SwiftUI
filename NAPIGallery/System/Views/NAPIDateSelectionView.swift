@@ -52,62 +52,34 @@ struct NAPIDateSelectionView: View {
                     displayedComponents: [.date]
                 )
                 .datePickerStyle(GraphicalDatePickerStyle())
-                HStack {
-                    Button("Cancel") {
-                        viewPresented = false
-                    }
-                    .foregroundColor(.red)
-                    .buttonStyle(BorderlessButtonStyle())
-                    .padding()
-                    Spacer()
-                    Button("Today") {
-                        self.pickerDate.startDate = Date()
-                        selectedDate = Date()
-                    }
-                    .padding()
-                    .buttonStyle(BorderlessButtonStyle())
-                    Spacer()
-                    Button("Done") {
-                        viewPresented = false
-                        selectedDate = self.pickerDate.startDate
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                    .padding()
-                }
+                buttonBar
             }
         }
     }
-}
 
-struct NAPIDate {
-    let date: Date
-    
-    init(_ date: Date) {
-        self.date = date
-    }
-
-    static func displayDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd,yyyy"
-        return dateFormatter.string(from: date)
-    }
-    
-    static func dateFromDisplayDate(_ dateString: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd,yyyy"
-        return dateFormatter.date(from: dateString) ?? Date(timeIntervalSince1970: 0)
-    }
-    
-    static func iso8601DisplayDate(_ date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        return dateFormatter.string(from: date)
-    }
-    
-    static func dateFromIso8601DisplayDate(_ dateString: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        return dateFormatter.date(from: dateString) ?? Date(timeIntervalSince1970: 0)
+    var buttonBar: some View {
+        HStack {
+            Button("Cancel") {
+                viewPresented = false
+            }
+            .foregroundColor(.red)
+            .buttonStyle(BorderlessButtonStyle())
+            .padding()
+            Spacer()
+            Button("Today") {
+                self.pickerDate.startDate = Date()
+                selectedDate = Date()
+            }
+            .padding()
+            .buttonStyle(BorderlessButtonStyle())
+            Spacer()
+            Button("Done") {
+                viewPresented = false
+                selectedDate = self.pickerDate.startDate
+            }
+            .buttonStyle(BorderlessButtonStyle())
+            .padding()
+        }
     }
 }
 

@@ -10,28 +10,6 @@ import SwiftUI
 //
 // Special thanks to @Matteo Pacini of Stack Overflow
 //
-struct NAPIActivityIndicatorView2: View {
-
-    @Binding var isShowing: Bool
-
-    var body: some View {
-        GeometryReader { geometry in
-            ZStack(alignment: .center) {
-                VStack(alignment: .center) {
-                    Text("Loading...")
-                    NAPIUIActivityIndicator(isAnimating: .constant(true), style: .large)
-                }
-                .frame(width: geometry.size.width / 2,
-                       height: geometry.size.height / 5)
-                .background(Color.secondary.colorInvert())
-                .foregroundColor(Color.primary)
-                .cornerRadius(20)
-                .opacity(self.isShowing ? 1 : 0)
-            }
-        }
-    }
-}
-
 struct NAPIActivityIndicatorView<Content>: View where Content: View {
 
     @Binding var isShowing: Bool
@@ -80,9 +58,9 @@ struct NAPIActivityIndicatorView_Previews: PreviewProvider {
         NAPIActivityIndicatorView(isShowing: .constant(true)) {
             NavigationView {
                 Text("")
-//                List(["1", "2", "3", "4", "5"], id: \.self) { row in
-//                    Text(row)
-//                }.navigationBarTitle(Text("A List"), displayMode: .large)
+                List(["1", "2", "3", "4", "5"], id: \.self) { row in
+                    Text(row)
+                }.navigationBarTitle(Text("A List"), displayMode: .large)
             }
         }
 

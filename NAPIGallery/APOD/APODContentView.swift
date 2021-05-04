@@ -18,6 +18,7 @@ struct APODContentView: View {
         HStack {
             VStack {
                 if let title = (viewModel.title) {
+                    Spacer()
                     Text(title)
                         .font(.title)
                         .lineLimit(3)
@@ -25,8 +26,10 @@ struct APODContentView: View {
                 }
                 // Display the date
                 Text(NAPIService.standardDateString(date.startDate))
-                        .font(.headline)
-                
+                    .font(.headline).fontWeight(.heavy)
+                    .padding(.top, 5)
+                    .padding(.bottom, 10)
+
                 GeometryReader { geo in
                     if geo.size.height > geo.size.width {
                         VStack {

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "NASA_Mars_Rover_Perseverance_Small@1x.jpeg",
+      "filename" : "Mars_Rover_Perseverance_Small_Rounded@1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "NASA_Mars_Rover_Perseverance_Small@2x.jpeg",
+      "filename" : "Mars_Rover_Perseverance_Small_Rounded@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "NASA_Mars_Rover_Perseverance_Small@3x.jpg",
+      "filename" : "Mars_Rover_Perseverance_Small_Rounded@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
