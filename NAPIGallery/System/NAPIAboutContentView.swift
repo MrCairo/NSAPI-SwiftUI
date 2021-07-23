@@ -19,7 +19,7 @@ struct NAPIAboutContentView: View {
                     .edgesIgnoringSafeArea(.all)
                     .frame(width: metrics.size.width,
                            height: metrics.size.height,
-                           alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                           alignment: .center)
             }
             ScrollView {
                 info
@@ -57,6 +57,11 @@ struct NAPIAboutContentView: View {
                 .font(Font.caption.weight(.bold))
                 .padding()
                 .foregroundColor(.white)
+            Spacer()
+            Text("Version \(NAPIService.appVersion)")
+                .font(Font.caption.weight(.bold))
+                .padding()
+                .foregroundColor(.white)
         }
     }
     
@@ -64,6 +69,7 @@ struct NAPIAboutContentView: View {
             ((Text("Please visit ")
                 + Text("https://api.nasa.gov ")
                     .foregroundColor(.yellow)
+                    .font(Font.title2.weight(.bold))
                     .underline(color: .white))
                 + Text("to generate a free API Key which will allow for more data requests per hour."))
     }

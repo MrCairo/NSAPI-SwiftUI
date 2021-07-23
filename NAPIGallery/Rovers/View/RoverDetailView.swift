@@ -26,6 +26,7 @@ private struct RoverImageStackView: View {
                 index in
                 VStack {
                     RoverImageView(imageUrlString: dataModel[index].imageUrlString)
+                        .animation(Animation.easeIn(duration: 0.2))
                     Text("Earth Date: \(dataModel[index].earthDate) (Sol: \(dataModel[index].sol))")
                     Text(" ")
                 }

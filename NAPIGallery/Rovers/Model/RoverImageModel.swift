@@ -104,6 +104,11 @@ struct RoverPhotosModel: Codable, Identifiable {
         photos = []
         latestPhotos = nil
     }
+    
+    init(failed: Bool) {
+        photos = (failed) ? nil : []
+        latestPhotos = nil
+    }
 }
 
 // MARK: -
