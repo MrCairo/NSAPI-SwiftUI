@@ -53,6 +53,7 @@ struct RoverImageDates {
 final class RoverContentViewModel: NAPIService, Identifiable, ObservableObject {
     public private(set) var roverType: RoverType
     public private(set) var aggregate = [RoverCameraImageData]()
+    public private(set) var serviceComplete = false
     @Published private(set) var model = RoverPhotosModel()
 
     private let queryParms: [URLQueryItem]
@@ -64,11 +65,13 @@ final class RoverContentViewModel: NAPIService, Identifiable, ObservableObject {
     }
     
     public func reset() {
-        self.aggregate = [RoverCameraImageData]()
-        self.model = RoverPhotosModel()
+        aggregate = [RoverCameraImageData]()
+        model = RoverPhotosModel()
+        serviceComplete = false
     }
     
     func fetch(queryParms: [URLQueryItem] = []) -> Bool {
+        serviceComplete = false
         //
         // If there is an earth_date or sol included in the queryParms, it's not
         // going to be the latest but a query based upon the earth date or sol.
@@ -91,11 +94,12 @@ final class RoverContentViewModel: NAPIService, Identifiable, ObservableObject {
                 type: RoverPhotosModel.self,
                 decoder: JSONDecoder()
             )
-            .replaceError(with: RoverPhotosModel())
+            .replaceError(with: RoverPhotosModel(failed: true))
             .sink { [weak self] model in
                 DispatchQueue.main.sync {
                     self?.model = model
                     self?.aggregateModel()
+                    self?.serviceComplete = true
                 }
             }
             .store(in: &cancellables)

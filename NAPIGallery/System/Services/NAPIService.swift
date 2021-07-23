@@ -38,6 +38,14 @@ public class NAPIService {
         }
     }
     
+    public static var appVersion: String {
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            return version
+        } else {
+            return "---"
+        }
+    }
+    
     
     ///
     /// Performs a query to the NASA API site.

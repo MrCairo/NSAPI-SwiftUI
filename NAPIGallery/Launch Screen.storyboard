@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="fCI-FM-5nb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="fCI-FM-5nb">
                                 <rect key="frame" x="79" y="99.5" width="256" height="256"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="256" id="arB-Xy-Ykq"/>
@@ -50,7 +50,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage" width="85" height="85"/>
+        <image name="launchImage" width="85" height="85"/>
         <namedColor name="launchScreenBackgroundColor">
             <color red="0.80000001192092896" green="0.80000001192092896" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

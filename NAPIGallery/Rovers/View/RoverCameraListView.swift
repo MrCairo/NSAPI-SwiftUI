@@ -21,7 +21,9 @@ struct RoverCameraListView: View {
         Text("Date: \((photoDate.startDateIsToday()) ? "Latest" : NAPIDate.displayDate(photoDate.startDate))")
             .font(.title2)
             HStack {
-                if viewModel.aggregate.count > 0 {
+                if viewModel.aggregate.count == 0 && viewModel.serviceComplete == true {
+                    noImages
+                } else if viewModel.aggregate.count > 0 {
                     cameraList
                 } else {
                     AnyView(NAPIActivityIndicatorView(isShowing: $showAI) {
@@ -42,6 +44,16 @@ struct RoverCameraListView: View {
         .navigationBarItems(trailing: navButtons)
     }
     
+    var noImages: some View {
+        Text("There are no images for this date. Please choose a different date.")
+            .padding()
+            .multilineTextAlignment(.center)
+//            .onAppear {
+//                viewModel.reset()
+//                showAI = false
+//            }
+    }
+
     var navButtons: some View {
         HStack {
             Button(action: { showingDatePicker = true },
