@@ -26,7 +26,7 @@ private class ImageCache {
     private var cache: [String: CachedImage] = [:]
     private var queue = DispatchQueue(label: "ImageCache_SyncQueue")
     private var collector: CacheCollectorTimer = CacheCollectorTimer(timeInterval: 5.0)
-    private let cacheMaxAge: TimeInterval = 3600.0
+    private let cacheMaxAge: TimeInterval = 300.0
     
     public func store(cachedImage: CachedImage, identifiedBy: String) {
         collector.suspend()
