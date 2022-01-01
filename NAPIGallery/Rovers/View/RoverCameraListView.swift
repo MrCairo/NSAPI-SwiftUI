@@ -16,21 +16,22 @@ struct RoverCameraListView: View {
     @State private var showingRoverInfo = false
     @StateObject var photoDate = NAPISelectedDate(startDate: Date.distantPast)
 
+    @ViewBuilder
     var body: some View {
         VStack {
         Text("Date: \((photoDate.startDateIsToday()) ? "Latest" : NAPIDate.displayDate(photoDate.startDate))")
             .font(.title2)
             HStack {
                 if viewModel.aggregate.count == 0 && viewModel.serviceComplete == true {
-                    noImages
+                    noImagesView
                 } else if viewModel.aggregate.count > 0 {
-                    cameraList
+                    cameraListView
                 } else {
-                    AnyView(NAPIActivityIndicatorView(isShowing: $showAI) {
+                    NAPIActivityIndicatorView(isShowing: $showAI) {
                         List {
                             Text("")
                         }
-                    })
+                    }
                     .onAppear {
                         if photoDate.startDate == Date.distantPast {
                             photoDate.startDate = RoverImageDates.maxDate(rover: rover)
@@ -44,7 +45,7 @@ struct RoverCameraListView: View {
         .navigationBarItems(trailing: navButtons)
     }
     
-    var noImages: some View {
+    var noImagesView: some View {
         Text("There are no images for this date. Please choose a different date.")
             .padding()
             .multilineTextAlignment(.center)
@@ -96,7 +97,7 @@ struct RoverCameraListView: View {
         _ = viewModel.fetch(queryParms: query)
     }
     
-    private var cameraList: some View {
+    private var cameraListView: some View {
         return List(self.viewModel.aggregate) { camData in
             RoverMenuNavigationLink(menuItem: NAPIMenuItem(title: "\(camData.name)",
                                                            description: camData.description,

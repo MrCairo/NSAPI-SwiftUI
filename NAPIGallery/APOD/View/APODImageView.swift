@@ -22,6 +22,7 @@ struct APODImageView: View {
     @State private var showAI: Bool = true
     @State private var urlString: String = ""
     
+    @ViewBuilder
     var body: some View {
         if let string = String(data: mediaData, encoding: .utf8) {
             switch(mediaType) {
@@ -29,33 +30,34 @@ struct APODImageView: View {
             // The image is located via a URL. Could also be a file URL
             case .imageURL:
                 if string.hasPrefix("http") || string.hasPrefix("file") {
-                    return AnyView(remoteImage(urlString: string))
+                    remoteImage(urlString: string)
+                        .aspectRatio(contentMode: .fit)
                 } else {
                     // The image URL wasn't a URL (http(s):// or file://) so try to
                     // load it as a system type image.
-                    return AnyView(APODImageView.imageFromName(string)
+                    APODImageView.imageFromName(string)
                         .resizable()
-                        .aspectRatio(contentMode: .fill))
+                        .aspectRatio(contentMode: .fill)
                 }
                 
             // The imageData represents a binary image. Convert it an display it.
             case .imageData:
                 if let uiImage = UIImage(data: mediaData) {
-                    return AnyView(Image(uiImage: uiImage)
+                    Image(uiImage: uiImage)
                         .resizable()
-                        .aspectRatio(contentMode: .fill))
+                        .aspectRatio(contentMode: .fill)
                 } else {
-                    return AnyView(Image("xmark.octagon.fill")
+                    Image("xmark.octagon.fill")
                         .resizable()
-                        .aspectRatio(contentMode: .fit))
+                        .aspectRatio(contentMode: .fit)
                 }
 
             default:
-                return AnyView(APODImageView.failImage())
+                APODImageView.failImage()
             }
         }
 
-        return AnyView(APODImageView.failImage())
+        APODImageView.failImage()
     }
     
     init(mediaType: APODMediaType, mediaData: Data) {
@@ -88,22 +90,20 @@ extension APODImageView {
         return newImage
     }
 
+    @ViewBuilder
     private func remoteImage(urlString: String) -> some View {
         if let image = loader.load(urlString) {
-            return AnyView(Image(uiImage: image)
+            Image(uiImage: image)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-            )
         } else {
             // We add this NavigationView because it takes up the entire
             // view bounds and thus can be centered properly. I'm sure there
             // is a better way of doing it...
-            return AnyView(NAPIActivityIndicatorView(isShowing: $showAI) {
+            NAPIActivityIndicatorView(isShowing: $showAI) {
                 List {
                     Text("")
                 }
             }
-            .aspectRatio(contentMode: .fit))
         }
     }
     
