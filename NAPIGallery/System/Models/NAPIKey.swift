@@ -29,7 +29,7 @@ class NAPIKey: ObservableObject {
     private let documentsURL: URL
     
     public func isDemoKey() -> Bool {
-        return value == "DEMO_KEY"
+        return value == NAPIKey.demoKey
     }
     
     private var key: String {
@@ -44,14 +44,14 @@ class NAPIKey: ObservableObject {
 
     private func loadKey() -> String {
         guard let file = URL(string: "\(documentsURL)napi_key.txt") else {
-            return "DEMO_KEY"
+            return NAPIKey.demoKey
         }
         
         if let key = try? String(contentsOfFile: file.path, encoding: .utf8) {
             return key
         }
         
-        return "DEMO_KEY"
+        return NAPIKey.demoKey
     }
     
     private func saveKey(_ key: String) -> Bool {

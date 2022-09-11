@@ -56,8 +56,6 @@ struct APODImageView: View {
                 APODImageView.failImage()
             }
         }
-
-        APODImageView.failImage()
     }
     
     init(mediaType: APODMediaType, mediaData: Data) {
