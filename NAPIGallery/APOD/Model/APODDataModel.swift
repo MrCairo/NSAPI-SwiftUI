@@ -15,6 +15,9 @@ enum APODMediaType: Int, Codable {
 }
 
 struct APODDataModel: Codable {
+    static let initialServiceVersion = "000"
+    static let unknownServiceVersion = "-1"
+    static let failureTitle = "FAILURE"
     private(set) var copyright: String?
     private(set) var date: String?
     private(set) var explanation: String?
@@ -39,6 +42,10 @@ struct APODDataModel: Codable {
         return nil
     }
     
+    func isFailure() -> Bool {
+        return title == "FAILURE" && date == "1970-01-01" && url == nil
+    }
+    
     init() {
         title = ""
         explanation = ""
@@ -53,14 +60,14 @@ struct APODDataModel: Codable {
     init(asFailure: Bool) {
         self.init()
         if asFailure {
-            title = "FAILURE"
-            explanation = "Failed to fetch real APOD data"
+            title = APODDataModel.failureTitle
+            explanation = ""
             hdurl = nil
             url = nil
             copyright = ""
-            date = "1970-01-01"
+            date = ""
             media_type = ""
-            service_version = "0"
+            service_version = APODDataModel.initialServiceVersion
         }
     }
     

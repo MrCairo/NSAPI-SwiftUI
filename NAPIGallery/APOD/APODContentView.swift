@@ -17,30 +17,7 @@ struct APODContentView: View {
     var body: some View {
         HStack {
             VStack {
-                if let title = (viewModel.title) {
-                    Spacer()
-                    Text(title)
-                        .font(.title)
-                        .lineLimit(3)
-                        .multilineTextAlignment(.center)
-                }
-                // Display the date
-                Text(NAPIService.standardDateString(date.startDate))
-                    .font(.headline).fontWeight(.heavy)
-                    .padding(.top, 5)
-                    .padding(.bottom, 10)
-
-                GeometryReader { geo in
-                    if geo.size.height > geo.size.width {
-                        VStack {
-                            APODContentMixView(data: viewModel.apodData)
-                        }
-                    } else {
-                        HStack {
-                            APODContentMixView(data: viewModel.apodData)
-                        }
-                    }
-                }
+                validAPODView
             }
             .onAppear(perform: {
                 callService()
@@ -58,6 +35,37 @@ struct APODContentView: View {
                                                 Label("Select Date", systemImage: "calendar")
                                                     .labelStyle(IconOnlyLabelStyle())
         }))
+    
+
+        }
+    
+    var validAPODView: some View {
+        Group {
+            if let title = (viewModel.title) {
+                Spacer()
+                Text((title == "FAILURE") ? "Nothing Today" : title)
+                    .font(.title)
+                    .lineLimit(3)
+                    .multilineTextAlignment(.center)
+            }
+            // Display the date
+            Text(NAPIService.standardDateString(date.startDate))
+                .font(.headline).fontWeight(.heavy)
+                .padding(.top, 5)
+                .padding(.bottom, 10)
+
+            GeometryReader { geo in
+                if geo.size.height > geo.size.width {
+                    VStack {
+                        APODContentMixView(data: viewModel.apodData)
+                    }
+                } else {
+                    HStack {
+                        APODContentMixView(data: viewModel.apodData)
+                    }
+                }
+            }
+        }
     }
     
     private func callService() {
